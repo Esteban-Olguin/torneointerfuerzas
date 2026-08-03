@@ -1,0 +1,16 @@
+.footer {
+    background-color: var(--title-color);
+
+    a {
+        color: var(--text-color-light);
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: var(--text-color-light) !important;
+        }
+    }
+
+    p {
+        color: var(--text-color-light);
+    }
+}

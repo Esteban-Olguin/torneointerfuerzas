@@ -1,0 +1,75 @@
+.header {
+    background-color: var(--title-color);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    transition: background-color 0.3s ease;
+
+    nav {
+        padding-left: 0;
+    }
+
+    .navbar_logo-name {
+        font-weight: 400;
+
+        &--bottom {
+            color: var(--first-color-alt);
+        }
+    }
+
+    .navbar-brand {
+        span {
+            font-size: $h2-font-size;
+            font-weight: $font-semi-bold;
+            color: var(--first-color-lighter);
+        }
+    }
+
+    .nav-link {
+        color: var(--text-color-light);
+        font-weight: $font-medium;
+        transition: color 0.3s ease;
+
+        &:hover,
+        &.active {
+            color: var(--first-color-lighter);
+        }
+    }
+
+    .dropdown-menu {
+        background-color: var(--title-color);
+        border: none;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+        .dropdown-item {
+            color: var(--text-color-light);
+            transition: background-color 0.3s ease, color 0.3s ease;
+
+            &:hover {
+                background-color: var(--first-color);
+                color: #fff;
+            }
+        }
+    }
+
+    .btn-admin {
+        background-color: var(--yellow);
+        color: var(--title-color);
+        font-weight: $font-semi-bold;
+        border-radius: 4px;
+        padding: 0.4rem 1rem;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: var(--red);
+        }
+    }
+
+    .social-link {
+        color: var(--text-color-light);
+        font-size: 1.2rem;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: var(--first-color-lighter);
+        }
+    }
+}

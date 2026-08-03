@@ -1,0 +1,456 @@
+@charset "UTF-8";
+/* Font size for large devices */
+@import url("https://fonts.googleapis.com/css2?family=Contrail+One&display=swap");
+/*==================== VARIABLES CSS ====================*/
+:root {
+  /*========== Colors ==========*/
+  --hue-color: 250;
+  /*Purple 250 - Green 142 - Blue 230 - Pink 340*/
+  /* HSL color mode */
+  --first-color: hsl(var(--hue-color), 69%, 61%);
+  --first-color-second: hsl(var(--hue-color), 69%, 61%);
+  --first-color-alt: hsl(var(--hue-color), 57%, 53%);
+  --first-color-lighter: hsl(var(--hue-color), 92%, 85%);
+  --title-color: hsl(var(--hue-color), 8%, 15%);
+  --text-color: hsl(var(--hue-color), 8%, 45%);
+  --text-color-light: hsl(var(--hue-color), 8%, 65%);
+  --input-color: hsl(var(--hue-color), 70%, 96%);
+  --body-color: hsl(var(--hue-color), 60%, 99%);
+  --container-color: #fff;
+  --scroll-bar-color: hsl(var(--hue-color), 12%, 90%);
+  --scroll-thumb-color: hsl(var(--hue-color), 12%, 80%);
+  --yellow: hsl(59, 100%, 50%);
+  --green: #14b414;
+  --dark-green: #0f9b0f;
+  --blue: #0099f8;
+  --red: #ff4524;
+  --dark-red: #c72c2c;
+  --dark-grey: #242329;
+}
+
+/*========== Font and typography ==========*/
+/* .5rem = 8px, 1rem = 16px, 1.5rem = 24px ... */
+/*========== Font weight ==========*/
+/*========== Margenes Bottom ==========*/
+/* .25rem = 4px, .5rem = 8px, .75rem = 12px ... */
+/*========== z index ==========*/
+.header {
+  background-color: var(--title-color);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.3s ease;
+}
+.header nav {
+  padding-left: 0;
+}
+.header .navbar_logo-name {
+  font-weight: 400;
+}
+.header .navbar_logo-name--bottom {
+  color: var(--first-color-alt);
+}
+.header .navbar-brand span {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--first-color-lighter);
+}
+.header .nav-link {
+  color: var(--text-color-light);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+.header .nav-link:hover, .header .nav-link.active {
+  color: var(--first-color-lighter);
+}
+.header .dropdown-menu {
+  background-color: var(--title-color);
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.header .dropdown-menu .dropdown-item {
+  color: var(--text-color-light);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.header .dropdown-menu .dropdown-item:hover {
+  background-color: var(--first-color);
+  color: #fff;
+}
+.header .btn-admin {
+  background-color: var(--yellow);
+  color: var(--title-color);
+  font-weight: 600;
+  border-radius: 4px;
+  padding: 0.4rem 1rem;
+  transition: background-color 0.3s ease;
+}
+.header .btn-admin:hover {
+  background-color: var(--red);
+}
+.header .social-link {
+  color: var(--text-color-light);
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+.header .social-link:hover {
+  color: var(--first-color-lighter);
+}
+
+.footer {
+  background-color: var(--title-color);
+}
+.footer a {
+  color: var(--text-color-light);
+  transition: color 0.3s ease;
+}
+.footer a:hover {
+  color: var(--text-color-light) !important;
+}
+.footer p {
+  color: var(--text-color-light);
+}
+
+/*==================== GOOGLE FONTS ====================*/
+/*==================== LAYOUT ====================*/
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/*==================== BASE ====================*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+input,
+button {
+  font-family: "Contrail One", sans-serif;
+  font-size: 0.938rem;
+}
+
+body {
+  margin: 0 0 3rem 0;
+  font-family: "Contrail One", sans-serif;
+  font-size: 0.938rem;
+  background-color: var(--dark-grey);
+  color: var(--text-color);
+}
+
+input,
+button {
+  border: none;
+  outline: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--title-color);
+  font-weight: 600;
+  font-family: "Exo 2", sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+b {
+  color: var(--first-color);
+}
+
+/*==================== REUSABLE SCSS CLASSES ====================*/
+.section {
+  padding: 2rem 0 4rem;
+}
+.section__title {
+  font-size: 1.5rem;
+  color: var(--title-color);
+}
+.section__subtitle {
+  display: block;
+  font-size: 0.813rem;
+  margin-bottom: 3rem;
+}
+.section__title, .section__subtitle {
+  text-align: center;
+}
+
+/*==================== CUSTOM SCROLLBAR ====================*/
+::-webkit-scrollbar {
+  width: 0.6rem;
+  background-color: var(--scroll-bar-color);
+  border-radius: 0.5rem;
+  width: 0.5rem;
+  height: 0.75rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scroll-thumb-color);
+  border-radius: 0.5rem;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--first-color);
+}
+
+/*==================== BUTTONS ====================*/
+.btn {
+  /* Estilos base del botón */
+  display: inline-block;
+  background-color: var(--first-color);
+  color: #fff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-weight: font-medium;
+  transition: 0.2s;
+  /* Hover principal */
+}
+.btn:hover {
+  background-color: var(--first-color-alt);
+  color: var(--container-color);
+  transform: scale(1.05);
+  cursor: pointer;
+}
+.btn:hover .btn__icon {
+  transform: translateX(3px);
+}
+.btn {
+  /* Icono dentro del botón */
+}
+.btn__icon {
+  margin-left: m-0-5;
+  transition: 0.3s;
+}
+.btn {
+  /* Variante flex (alinear contenido e ícono) */
+}
+.btn--flex {
+  display: inline-flex;
+  align-items: center;
+}
+.btn {
+  /* Variante small */
+}
+.btn--small {
+  padding: 0.75rem 1rem;
+}
+.btn {
+  /* Variante link (botón estilo enlace) */
+}
+.btn--link {
+  padding: 0;
+  background-color: transparent;
+  color: var(--first-color);
+}
+.btn--link:hover {
+  background-color: transparent;
+  color: var(--first-color-alt);
+}
+
+/*==================== ACCORDION COMPONENT ====================*/
+.accordion {
+  /* Contenedor principal */
+  border-radius: none;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  background: linear-gradient(135deg, #f8fafc 0%, #e3e9f3 100%);
+  overflow: hidden;
+  margin-bottom: 2rem;
+  /*==================== HEADER ====================*/
+}
+.accordion-header .accordion-button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1.25rem 2rem;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1.15rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(13, 110, 253, 0.05);
+}
+.accordion-header .accordion-button:hover {
+  background: var(--first-color-light);
+  color: var(--first-color);
+}
+.accordion-header .accordion-button:not(.collapsed) {
+  background: var(--first-color-second);
+  color: #fff;
+}
+.accordion-header .accordion-button::after {
+  content: "";
+  display: inline-block;
+  margin-left: auto;
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: transform 0.3s cubic-bezier(0.4, 2, 0.6, 1);
+}
+.accordion-header .accordion-button.collapsed::after {
+  transform: rotate(-90deg);
+}
+.accordion {
+  /*==================== COLLAPSE ====================*/
+}
+.accordion .accordion-collapse {
+  animation: fadeInAccordion 0.5s cubic-bezier(0.4, 2, 0.6, 1);
+  border-top: 1px solid #e3e9f3;
+}
+.accordion .accordion-collapse .accordion-body {
+  padding: 1.5rem 2rem;
+  background: var(--container-color);
+  border-radius: 0 0 1rem 1rem;
+  font-size: 1.05rem;
+  box-shadow: 0 2px 8px rgba(13, 110, 253, 0.04);
+  /* Lista dentro del body */
+}
+.accordion .accordion-collapse .accordion-body ul {
+  padding-left: 1.5rem;
+  margin-bottom: 0;
+}
+.accordion .accordion-collapse .accordion-body ul li {
+  margin-bottom: 0.75rem;
+  position: relative;
+  padding-left: 1.25rem;
+  font-size: 1rem;
+}
+.accordion .accordion-collapse .accordion-body ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 0.6em;
+  height: 0.6em;
+  background: var(--first-color-lighter);
+  border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(13, 110, 253, 0.15);
+}
+.accordion .accordion-collapse .accordion-body strong {
+  color: var(--first-color);
+}
+
+/*==================== CONTACT FORM ====================*/
+#contact-form {
+  background-color: light;
+  border-radius: border-radius-lg;
+  box-shadow: box-shadow-sm;
+  padding: 2rem;
+}
+#contact-form h2 {
+  color: primary;
+  font-weight: font-weight-bold;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+#contact-form p.text-secondary {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+#contact-form .form-label {
+  font-weight: font-weight-semibold;
+  margin-bottom: 0.5rem;
+}
+#contact-form .form-control {
+  transition: border-color 0.2s ease-in-out;
+}
+#contact-form .form-control:focus {
+  border-color: var(--first-color-alt);
+  box-shadow: 0 0 0 0.2rem rgba(var(--first-color), 0.25);
+}
+#contact-form textarea.form-control {
+  resize: vertical;
+}
+#contact-form p.text-muted {
+  margin-top: 2rem;
+  font-size: 0.875rem;
+  text-align: center;
+}
+#contact-form p.text-muted a {
+  color: var(--first-color);
+  font-weight: font-weight-semibold;
+  text-decoration: none;
+}
+#contact-form p.text-muted a:hover {
+  text-decoration: underline;
+}
+
+/*==================== CARD COMPONENT ====================*/
+.card {
+  /* Estilos base del card */
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Movimiento al hover */
+}
+.card-move:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+.card {
+  /* Header del card */
+}
+.card__header {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-bottom: 1px solid #dee2e6;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #212529;
+}
+.card {
+  /* Body del card */
+}
+.card__body {
+  padding: 1rem;
+  font-size: 1rem;
+  color: #495057;
+}
+.card__body p {
+  margin-bottom: 0.75rem;
+}
+.card {
+  /* Footer del card */
+}
+.card__footer {
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+  text-align: right;
+}
+.card__footer a.btn {
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+}
+
+/*==================== ANIMATIONS ====================*/
+@keyframes fadeInAccordion {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}/*# sourceMappingURL=main.css.map */
