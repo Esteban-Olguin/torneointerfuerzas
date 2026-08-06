@@ -13,6 +13,7 @@
 
 /*==================== GOOGLE FONTS ====================*/
 @import url('https://fonts.googleapis.com/css2?family=Contrail+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&display=swap');
 
 /*==================== LAYOUT ====================*/
 .grid {
@@ -103,14 +104,14 @@ b {
 ::-webkit-scrollbar {
     width: 0.6rem;
     background-color: var(--scroll-bar-color);
-    border-radius: 0.5rem;
+    border-radius: 0;
     width: 0.50rem;
     height: 0.75rem;
 }
 
 ::-webkit-scrollbar-thumb {
     background-color: var(--scroll-thumb-color);
-    border-radius: 0.5rem;
+    border-radius: 0;
     transition: .2s;
 
     &:hover {
@@ -125,25 +126,25 @@ b {
     background-color: var(--first-color);
     color: #fff;
     padding: 1rem;
-    border-radius: .5rem;
     font-weight: font-medium;
     transition: .2s;
+    border-radius: 1px; 
 
     /* Hover principal */
     &:hover {
         background-color: var(--first-color-alt);
         color: var(--container-color);
-        transform: scale(1.05);
+        transform: scale(1.03);
         cursor: pointer;
 
         .btn__icon {
-            transform: translateX(3px);
+            transform: translateX(2.5px);
         }
     }
 
     /* Icono dentro del botón */
     &__icon {
-        margin-left: m-0-5;
+        margin-left: $m-0-5;
         transition: .3s;
     }
 
@@ -174,7 +175,7 @@ b {
 /*==================== ACCORDION COMPONENT ====================*/
 .accordion {
     /* Contenedor principal */
-    border-radius: none;
+    border-radius: 0;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
     background: linear-gradient(135deg, #f8fafc 0%, #e3e9f3 100%);
     overflow: hidden;

@@ -1,6 +1,7 @@
 @charset "UTF-8";
 /* Font size for large devices */
 @import url("https://fonts.googleapis.com/css2?family=Contrail+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&display=swap");
 /*==================== VARIABLES CSS ====================*/
 :root {
   /*========== Colors ==========*/
@@ -78,7 +79,6 @@
   background-color: var(--yellow);
   color: var(--title-color);
   font-weight: 600;
-  border-radius: 4px;
   padding: 0.4rem 1rem;
   transition: background-color 0.3s ease;
 }
@@ -106,6 +106,109 @@
 }
 .footer p {
   color: var(--text-color-light);
+}
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
+  z-index: 1;
+}
+.hero .container-hero {
+  position: relative;
+  z-index: 2;
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  margin-top: 6rem;
+}
+.hero .section__title, .hero .section__subtitle {
+  font-family: "Anton", sans-serif;
+  color: #c0c0c0;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+  margin-bottom: 2rem;
+}
+.hero .section__title {
+  font-size: 6rem;
+}
+.hero .section__subtitle {
+  font-size: 3rem;
+  color: #cccaca;
+}
+.hero .section__text {
+  font-size: 1.25rem;
+  color: var(--text-color-light);
+  margin-bottom: 3rem;
+}
+.hero {
+  /* ==================== MEDIA QUERIES ==================== */
+}
+@media screen and (max-width: 1200px) {
+  .hero .section__title {
+    font-size: 5rem;
+  }
+  .hero .section__subtitle {
+    font-size: 2.5rem;
+  }
+}
+@media screen and (max-width: 992px) {
+  .hero .section__title {
+    font-size: 8rem;
+  }
+  .hero .section__subtitle {
+    font-size: 3rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .hero .section__title {
+    font-size: 6rem;
+  }
+  .hero .section__subtitle {
+    font-size: 1.75rem;
+  }
+}
+@media screen and (max-width: 576px) {
+  .hero .section__title {
+    font-size: 2.5rem;
+  }
+  .hero .section__subtitle {
+    font-size: 1.5rem;
+  }
+  .hero .section__text {
+    font-size: 1rem;
+  }
+}
+.hero .btn {
+  margin-top: 0.75rem;
+  background-color: var(--yellow);
+  color: var(--dark-grey);
+  font-weight: 600;
+  transition: 0.3s;
+  border-radius: 0;
+}
+.hero .btn:hover {
+  transform: scale(1.03);
+  background-color: var(--yellow);
+  color: var(--dark-grey);
+}
+.hero .btn__icon {
+  margin-left: 0.25rem;
+}
+@media screen and (max-width: 576px) {
+  .hero .btn {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 /*==================== GOOGLE FONTS ====================*/
@@ -194,14 +297,14 @@ b {
 ::-webkit-scrollbar {
   width: 0.6rem;
   background-color: var(--scroll-bar-color);
-  border-radius: 0.5rem;
+  border-radius: 0;
   width: 0.5rem;
   height: 0.75rem;
 }
 
 ::-webkit-scrollbar-thumb {
   background-color: var(--scroll-thumb-color);
-  border-radius: 0.5rem;
+  border-radius: 0;
   -webkit-transition: 0.2s;
   transition: 0.2s;
 }
@@ -216,25 +319,25 @@ b {
   background-color: var(--first-color);
   color: #fff;
   padding: 1rem;
-  border-radius: 0.5rem;
   font-weight: font-medium;
   transition: 0.2s;
+  border-radius: 1px;
   /* Hover principal */
 }
 .btn:hover {
   background-color: var(--first-color-alt);
   color: var(--container-color);
-  transform: scale(1.05);
+  transform: scale(1.03);
   cursor: pointer;
 }
 .btn:hover .btn__icon {
-  transform: translateX(3px);
+  transform: translateX(2.5px);
 }
 .btn {
   /* Icono dentro del botón */
 }
 .btn__icon {
-  margin-left: m-0-5;
+  margin-left: 0.5rem;
   transition: 0.3s;
 }
 .btn {
@@ -266,7 +369,7 @@ b {
 /*==================== ACCORDION COMPONENT ====================*/
 .accordion {
   /* Contenedor principal */
-  border-radius: none;
+  border-radius: 0;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
   background: linear-gradient(135deg, #f8fafc 0%, #e3e9f3 100%);
   overflow: hidden;

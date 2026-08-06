@@ -2,7 +2,7 @@ export default function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="footer py-3 mt-auto fixed-bottom shadow-sm">
+        <footer className="footer py-3 mt-auto shadow-sm">
             <div className="container">
                 <div className="row text-light text-center text-sm-start">
 

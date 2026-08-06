@@ -1,0 +1,123 @@
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top,
+                rgba(0, 0, 0, 0.7),
+                rgba(0, 0, 0, 0.3));
+        z-index: 1;
+    }
+
+    .container-hero {
+        position: relative;
+        z-index: 2;
+        padding: $m-3;
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+        margin-top: 6rem;
+    }
+
+    .section {
+
+        &__title,
+        &__subtitle {
+            font-family: "Anton", sans-serif;
+            color: #c0c0c0;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+            margin-bottom: $m-2;
+        }
+
+        &__title {
+            font-size: 6rem; // base grande
+        }
+
+        &__subtitle {
+            font-size: 3rem;
+            color: #cccaca;
+        }
+
+        &__text {
+            font-size: $h2-font-size;
+            color: var(--text-color-light);
+            margin-bottom: $m-3;
+        }
+    }
+
+    /* ==================== MEDIA QUERIES ==================== */
+    @media screen and (max-width: 1200px) {
+        .section__title {
+            font-size: 5rem;
+        }
+
+        .section__subtitle {
+            font-size: 2.5rem;
+        }
+    }
+
+    @media screen and (max-width: 992px) {
+        .section__title {
+            font-size: 8rem;
+        }
+
+        .section__subtitle {
+            font-size: 3rem;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .section__title {
+            font-size: 6rem;
+        }
+
+        .section__subtitle {
+            font-size: 1.75rem;
+        }
+    }
+
+    @media screen and (max-width: 576px) {
+        .section__title {
+            font-size: 2.5rem;
+        }
+
+        .section__subtitle {
+            font-size: 1.5rem;
+        }
+
+        .section__text {
+            font-size: 1rem;
+        }
+    }
+
+    .btn {
+        margin-top: $m-0-75;
+        background-color: var(--yellow);
+        color: var(--dark-grey);
+        font-weight: $font-semi-bold;
+        transition: .3s;
+        border-radius: 0;
+
+        &:hover {
+            transform: scale(1.03);
+            background-color: var(--yellow);
+            color: var(--dark-grey);
+        }
+
+        &__icon {
+            margin-left: $m-0-25;
+        }
+
+        @media screen and (max-width: 576px) {
+            width: 100%;
+            text-align: center;
+        }
+    }
+}
