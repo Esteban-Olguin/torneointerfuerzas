@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: center;
     text-align: left;
-    border-top: 4px solid var(--first-color);
+    border-top: 4px solid var(--text-color);
 
     &::before {
         content: "";
@@ -70,7 +70,7 @@
             }
 
             .about-img {
-                max-height: 400px; // más chico en tablets
+                max-height: 400px;
             }
         }
     }

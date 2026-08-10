@@ -219,7 +219,7 @@
   align-items: center;
   justify-content: center;
   text-align: left;
-  border-top: 4px solid var(--first-color);
+  border-top: 4px solid var(--text-color);
 }
 .about::before {
   content: "";
@@ -321,6 +321,14 @@
     -o-object-fit: contain;
        object-fit: contain;
   }
+}
+
+.organizers {
+  border-top: 4px solid var(--text-color);
+  background-color: var(--dark-grey);
+}
+.organizers img {
+  background-color: var(--dark-grey);
 }
 
 /*==================== GOOGLE FONTS ====================*/

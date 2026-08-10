@@ -3,8 +3,8 @@ import { useInView } from "react-intersection-observer";
 
 export default function About() {
     const { ref, inView } = useInView({
-        triggerOnce: true, // solo una vez
-        threshold: 0.2,    // se dispara cuando el 20% es visible
+        triggerOnce: true,
+        threshold: 0.2,
     });
 
     return (
