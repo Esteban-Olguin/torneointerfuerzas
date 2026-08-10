@@ -1,0 +1,122 @@
+.about {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    border-top: 4px solid var(--first-color);
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top,
+                rgba(0, 0, 0, 0.7),
+                rgba(0, 0, 0, 0.3));
+        z-index: 1;
+    }
+
+    .container-about {
+        position: relative;
+        z-index: 2;
+        max-width: 1100px;
+        color: #fff;
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-family: "Anton", sans-serif;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+            color: #fff;
+            border-bottom: 2px solid var(--yellow);
+            text-align: left;
+        }
+
+        p {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            line-height: 1.6;
+            color: #ddd;
+            margin-bottom: 2rem;
+            text-align: justify;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .about-img {
+            width: 100%;
+            max-height: 600px;
+            object-fit: cover;
+            object-position: bottom;
+        }
+    }
+
+    /* ==================== MEDIA QUERIES ==================== */
+    @media screen and (max-width: 992px) {
+        padding: 3rem 1.5rem;
+
+        .container-about {
+            h2 {
+                font-size: 2.5rem;
+            }
+
+            p {
+                font-size: 1.1rem;
+            }
+
+            .about-img {
+                max-height: 400px; // más chico en tablets
+            }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 2.5rem 1.2rem;
+        .container-about {
+            padding: 2rem 4rem 0 4rem;
+
+            h2 {
+                font-size: 2.2rem;
+                text-align: center;
+            }
+
+            p {
+                font-size: 1.05rem;
+                text-align: center;
+            }
+
+            .about-img {
+                max-height: 350px;
+                object-fit: contain;
+                object-position: bottom;
+            }
+        }
+    }
+
+
+    @media screen and (max-width: 576px) {
+        padding: 2rem 1rem;
+
+        .container-about {
+            h2 {
+                font-size: 1.8rem;
+                text-align: center;
+            }
+
+            p {
+                font-size: 0.95rem;
+                text-align: center;
+            }
+
+            .about-img {
+                max-height: 300px;
+                object-fit: contain;
+            }
+        }
+    }
+}
