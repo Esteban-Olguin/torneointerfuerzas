@@ -32,10 +32,11 @@ export default function Organizers() {
         <section className="organizers section py-5 bg-dark text-light">
             <div className="container">
                 <motion.h2
-                    className="fw-bold text-uppercase text-center mb-5"
-                    initial={{ opacity: 0, y: -50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
+                    className="fw-bold text-uppercase text-center mb-5 section__title sm"
+                    initial={{ opacity: 0, y: -50, scale: 0.9 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    viewport={{ once: true }}
                 >
                     Organizadores
                 </motion.h2>
@@ -48,6 +49,7 @@ export default function Organizers() {
                             initial={{ opacity: 0, y: 50 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: index * 0.2 }}
+                            viewport={{ once: true }}
                         >
                             <div className="card h-100 shadow border-0 bg-dark text-light">
                                 <img

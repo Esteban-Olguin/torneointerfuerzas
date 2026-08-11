@@ -324,11 +324,27 @@
 }
 
 .organizers {
-  border-top: 4px solid var(--text-color);
-  background-color: var(--dark-grey);
+  position: relative;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4)), url("/public/assets/img/organizers_bg.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 5rem 2rem;
 }
-.organizers img {
-  background-color: var(--dark-grey);
+.organizers::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.organizers .container {
+  position: relative;
+  z-index: 2;
+}
+.organizers h2 {
+  font-family: "Anton", sans-serif;
+  color: var(--white);
+  font-size: 3rem;
 }
 
 /*==================== GOOGLE FONTS ====================*/
