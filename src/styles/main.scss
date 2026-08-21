@@ -11,7 +11,7 @@
 @import 'pages/actas';
 
 @import 'pages/about';
-@import 'pages/organizers';
+@import 'pages/calendar';
 
 /*==================== GOOGLE FONTS ====================*/
 @import url('https://fonts.googleapis.com/css2?family=Contrail+One&display=swap');
@@ -45,6 +45,7 @@ body {
     margin: 0 0 $header-height 0;
     font-family: $body-font;
     font-size: $normal-font-size;
+    font-weight: normal;
     background-color: var(--dark-grey);
     color: var(--text-color);
 }
@@ -59,9 +60,8 @@ h1,
 h2,
 h3,
 h4 {
-    color: var(--title-color);
+    color: var(--white);
     font-weight: $font-semi-bold;
-    font-family: 'Exo 2', sans-serif;
 }
 
 ul {
@@ -87,7 +87,7 @@ b {
 
     &__title {
         font-size: $h1-font-size;
-        color: var(--title-color);
+        color: var(--white);
     }
 
     &__subtitle {

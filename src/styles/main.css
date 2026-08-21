@@ -214,7 +214,6 @@
 
 .about {
   position: relative;
-  min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -323,30 +322,65 @@
   }
 }
 
-.organizers {
+.calendar {
+  font-family: "Anton", sans-serif;
+  color: var(--white);
   position: relative;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4)), url("/public/assets/img/organizers_bg.png");
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4)), url("/assets/img/organizers_bg.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   padding: 5rem 2rem;
+  border-top: 4px solid var(--text-color);
 }
-.organizers::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-}
-.organizers .container {
-  position: relative;
-  z-index: 2;
-}
-.organizers h2 {
+.calendar .section__title {
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+  font-size: clamp(2rem, 5vw, 4rem);
   font-family: "Anton", sans-serif;
-  color: var(--white);
-  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+.calendar .section__subtitle {
+  font-weight: 100 !important;
+  font-size: 1.25rem;
+}
+.calendar table {
+  border-radius: 8px;
+  overflow: hidden;
+}
+.calendar table th {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--warning);
+  text-transform: uppercase;
+  font-weight: lighter;
+}
+.calendar table td {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.calendar .copa-img {
+  height: auto;
+  margin: 0 auto;
+  display: block;
+  filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+.calendar .copa-img:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.9));
 }
 
+/* Responsivo */
+@media (min-width: 768px) {
+  .calendar .copa-img {
+    max-width: 60%;
+    margin-bottom: 0;
+  }
+}
+@media (max-width: 576px) {
+  .calendar .copa-img {
+    display: none;
+  }
+}
 /*==================== GOOGLE FONTS ====================*/
 /*==================== LAYOUT ====================*/
 .grid {
@@ -368,14 +402,15 @@ html {
 body,
 input,
 button {
-  font-family: "Contrail One", sans-serif;
+  font-family: "Anton", sans-serif;
   font-size: 0.938rem;
 }
 
 body {
   margin: 0 0 3rem 0;
-  font-family: "Contrail One", sans-serif;
+  font-family: "Anton", sans-serif;
   font-size: 0.938rem;
+  font-weight: normal;
   background-color: var(--dark-grey);
   color: var(--text-color);
 }
@@ -390,9 +425,8 @@ h1,
 h2,
 h3,
 h4 {
-  color: var(--title-color);
+  color: var(--white);
   font-weight: 600;
-  font-family: "Exo 2", sans-serif;
 }
 
 ul {
@@ -418,7 +452,7 @@ b {
 }
 .section__title {
   font-size: 1.5rem;
-  color: var(--title-color);
+  color: var(--white);
 }
 .section__subtitle {
   display: block;

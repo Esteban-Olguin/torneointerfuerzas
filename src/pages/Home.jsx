@@ -1,6 +1,5 @@
 import Hero from '../components/Hero.jsx'
 import About from '../components/About.jsx'
-import Organizers from '../components/Organizers.jsx'
 import Calendar from '../components/Calendar.jsx'
 import BuyNumbers from '../components/BuyNumbers.jsx'
 import Transparency from '../components/Transparency.jsx'
@@ -16,9 +15,6 @@ function Home() {
 
             {/* Sección Sobre el torneo */}
             <About />
-
-            {/* Organizadores */}
-            <Organizers />
 
             {/* Calendario de partidos */}
             <Calendar />
