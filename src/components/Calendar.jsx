@@ -45,7 +45,7 @@ export default function Calendar() {
                             src="/assets/logos/copa_chots-logo.png"
                             alt="Copa Chots"
                             className="img-fluid copa-img"
-                            initial={{ opacity: 0, y: -50 }} // fade desde arriba en móviles
+                            initial={{ opacity: 0, y: -50 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8 }}
                             viewport={{ once: true }}
