@@ -5,14 +5,14 @@
 @import 'components/footer';
 @import 'components/hero';
 @import 'components/calendar';
+@import 'components/buyNumbers';
+@import 'components/about';
+@import 'components/winnersCarousel';
 
 // Páginas
 @import 'pages/terms';
-@import 'pages/actas';
+@import 'pages/privacy';
 
-@import 'pages/about';
-@import 'pages/calendar';
-@import 'pages/buyNumbers';
 
 /*==================== GOOGLE FONTS ====================*/
 @import url('https://fonts.googleapis.com/css2?family=Contrail+One&display=swap');

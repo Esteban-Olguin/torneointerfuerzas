@@ -210,116 +210,6 @@
   }
 }
 
-.about {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: left;
-  border-top: 4px solid var(--text-color);
-}
-.about::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
-  z-index: 1;
-}
-.about .container-about {
-  position: relative;
-  z-index: 2;
-  max-width: 1100px;
-  color: #fff;
-}
-.about .container-about h2 {
-  font-size: clamp(2rem, 5vw, 4rem);
-  font-family: "Anton", sans-serif;
-  margin-bottom: 1.5rem;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
-  color: #fff;
-  border-bottom: 2px solid var(--yellow);
-  text-align: left;
-}
-.about .container-about p {
-  font-size: clamp(1rem, 2.5vw, 1.3rem);
-  line-height: 1.6;
-  color: #ddd;
-  margin-bottom: 2rem;
-  text-align: justify;
-}
-.about .container-about img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-}
-.about .container-about .about-img {
-  width: 100%;
-  max-height: 600px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: bottom;
-     object-position: bottom;
-}
-.about {
-  /* ==================== MEDIA QUERIES ==================== */
-}
-@media screen and (max-width: 992px) {
-  .about {
-    padding: 3rem 1.5rem;
-  }
-  .about .container-about h2 {
-    font-size: 2.5rem;
-  }
-  .about .container-about p {
-    font-size: 1.1rem;
-  }
-  .about .container-about .about-img {
-    max-height: 400px;
-  }
-}
-@media screen and (max-width: 768px) {
-  .about {
-    padding: 2.5rem 1.2rem;
-  }
-  .about .container-about {
-    padding: 2rem 4rem 0 4rem;
-  }
-  .about .container-about h2 {
-    font-size: 2.2rem;
-    text-align: center;
-  }
-  .about .container-about p {
-    font-size: 1.05rem;
-    text-align: center;
-  }
-  .about .container-about .about-img {
-    max-height: 350px;
-    -o-object-fit: contain;
-       object-fit: contain;
-    -o-object-position: bottom;
-       object-position: bottom;
-  }
-}
-@media screen and (max-width: 576px) {
-  .about {
-    padding: 2rem 1rem;
-  }
-  .about .container-about h2 {
-    font-size: 1.8rem;
-    text-align: center;
-  }
-  .about .container-about p {
-    font-size: 0.95rem;
-    text-align: center;
-  }
-  .about .container-about .about-img {
-    max-height: 300px;
-    -o-object-fit: contain;
-       object-fit: contain;
-  }
-}
-
 .calendar {
   font-family: "Anton", sans-serif;
   color: var(--white);
@@ -385,6 +275,7 @@
   background-position: center;
   color: var(--white);
   padding: 5rem 2rem;
+  border-top: 4px solid var(--text-color);
 }
 .buy-numbers .promo-box,
 .buy-numbers .prize-box {
@@ -604,6 +495,587 @@
   }
   .buy-numbers .prize-box .prize-img {
     max-width: 85%;
+  }
+}
+.about {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  border-top: 4px solid var(--text-color);
+}
+.about::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
+  z-index: 1;
+}
+.about .container-about {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  color: #fff;
+}
+.about .container-about h2 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-family: "Anton", sans-serif;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border-bottom: 2px solid var(--yellow);
+  text-align: left;
+}
+.about .container-about p {
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  line-height: 1.6;
+  color: #ddd;
+  margin-bottom: 2rem;
+  text-align: justify;
+}
+.about .container-about img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+.about .container-about .about-img {
+  width: 100%;
+  max-height: 600px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: bottom;
+     object-position: bottom;
+}
+.about {
+  /* ==================== MEDIA QUERIES ==================== */
+}
+@media screen and (max-width: 992px) {
+  .about {
+    padding: 3rem 1.5rem;
+  }
+  .about .container-about h2 {
+    font-size: 2.5rem;
+  }
+  .about .container-about p {
+    font-size: 1.1rem;
+  }
+  .about .container-about .about-img {
+    max-height: 400px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .about {
+    padding: 2.5rem 1.2rem;
+  }
+  .about .container-about {
+    padding: 2rem 4rem 0 4rem;
+  }
+  .about .container-about h2 {
+    font-size: 2.2rem;
+    text-align: center;
+  }
+  .about .container-about p {
+    font-size: 1.05rem;
+    text-align: center;
+  }
+  .about .container-about .about-img {
+    max-height: 350px;
+    -o-object-fit: contain;
+       object-fit: contain;
+    -o-object-position: bottom;
+       object-position: bottom;
+  }
+}
+@media screen and (max-width: 576px) {
+  .about {
+    padding: 2rem 1rem;
+  }
+  .about .container-about h2 {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+  .about .container-about p {
+    font-size: 0.95rem;
+    text-align: center;
+  }
+  .about .container-about .about-img {
+    max-height: 300px;
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
+}
+
+#pastWinnersCarousel {
+  --winners-bg: #111;
+  --winners-card: #1b1b1b;
+  --winners-card-light: #242424;
+  --winners-text: #f5f5f5;
+  --winners-muted: #a7a7a7;
+  --winners-accent: #8b5cf6;
+  --winners-accent-light: #a78bfa;
+  --winners-border: rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 0;
+  background: radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.1), transparent 45%), var(--winners-bg);
+}
+#pastWinnersCarousel .winners-header {
+  max-width: 450px;
+  margin: 0;
+  text-align: left;
+  padding-right: 2rem;
+}
+#pastWinnersCarousel .winners-eyebrow {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  color: var(--winners-accent-light);
+  font-family: "Anton", sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.35em;
+}
+#pastWinnersCarousel .winners-title {
+  margin: 0;
+  color: var(--winners-text);
+  font-family: "Anton", sans-serif;
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+#pastWinnersCarousel .winners-subtitle {
+  max-width: 400px;
+  margin: 1rem 0 0;
+  color: var(--winners-muted);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+#pastWinnersCarousel .winners-divider {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.7rem;
+  width: 180px;
+  margin: 1.25rem 0 0;
+}
+#pastWinnersCarousel .winners-divider span:not(.winners-divider-star) {
+  width: 65px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.2);
+}
+#pastWinnersCarousel .winners-divider-star {
+  color: var(--winners-accent-light);
+  font-size: 1rem;
+}
+#pastWinnersCarousel .winners-carousel {
+  position: relative;
+  max-width: 320px;
+  margin: 0 auto;
+  padding-bottom: 2.5rem;
+  overflow: hidden;
+}
+#pastWinnersCarousel .carousel-inner {
+  overflow: hidden;
+  border-radius: 12px;
+}
+#pastWinnersCarousel .carousel-item {
+  padding: 0;
+  transition: transform 0.6s ease-in-out;
+}
+#pastWinnersCarousel .winner-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /*
+   * Dimensiones pequeñas
+   * Ancho: ~320px
+   * Alto: ~380px
+   * Proporción: 1:1.19 (vertical)
+   */
+  width: 100%;
+  min-height: 380px;
+  max-height: 380px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--winners-card-light), var(--winners-card));
+  border: 1px solid var(--winners-border);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+#pastWinnersCarousel .winner-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+#pastWinnersCarousel .winner-number {
+  position: absolute;
+  z-index: 5;
+  top: 0.7rem;
+  left: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  color: rgba(255, 255, 255, 0.9);
+  font-family: "Anton", sans-serif;
+  font-size: 0.6rem;
+}
+#pastWinnersCarousel .winner-image-wrapper {
+  position: relative;
+  width: 100%;
+  /*
+   * Altura pequeña pero suficiente
+   * Proporción 4:3.5 (vertical)
+   */
+  height: 260px;
+  min-height: 260px;
+  overflow: hidden;
+  background: #1a1a1a;
+}
+#pastWinnersCarousel .winner-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  /*
+   * Optimizaciones de calidad
+   */
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center 20%;
+     object-position: center 20%;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  /*
+   * Asegura que la imagen no se distorsione
+   */
+  max-width: 100%;
+  max-height: 100%;
+  transition: transform 0.6s ease, filter 0.3s ease;
+}
+#pastWinnersCarousel .winner-card:hover .winner-image {
+  transform: scale(1.03);
+  filter: brightness(1.05);
+}
+#pastWinnersCarousel .winner-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(27, 27, 27, 0.85) 0%, transparent 35%), linear-gradient(180deg, rgba(0, 0, 0, 0.15), transparent 25%);
+  pointer-events: none;
+}
+#pastWinnersCarousel .winner-trophy {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+}
+#pastWinnersCarousel .winner-trophy span {
+  color: var(--winners-accent-light);
+  font-size: 0.8rem;
+}
+#pastWinnersCarousel .winner-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  padding: 0.9rem 1rem;
+}
+#pastWinnersCarousel .winner-label {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--winners-accent-light);
+  font-family: "Anton", sans-serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+}
+#pastWinnersCarousel .winner-name {
+  margin: 0;
+  color: var(--winners-text);
+  font-family: "Anton", sans-serif;
+  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+#pastWinnersCarousel .winner-accent {
+  width: 35px;
+  height: 2px;
+  margin-top: 0.5rem;
+  border-radius: 10px;
+  background: var(--winners-accent);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
+}
+#pastWinnersCarousel .winners-control {
+  position: absolute;
+  top: 50%;
+  width: 34px;
+  height: 34px;
+  margin-top: -17px;
+  opacity: 1;
+  z-index: 10;
+  background: transparent;
+  border: none;
+}
+#pastWinnersCarousel .carousel-control-prev {
+  left: 0.35rem;
+}
+#pastWinnersCarousel .carousel-control-next {
+  right: 0.35rem;
+}
+#pastWinnersCarousel .winners-control-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  background: rgba(20, 20, 20, 0.9);
+  color: #fff;
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+#pastWinnersCarousel .winners-control-icon:hover {
+  background: var(--winners-accent);
+  transform: scale(1.05);
+}
+#pastWinnersCarousel .winners-indicators {
+  position: absolute;
+  bottom: -1.5rem;
+  left: 50%;
+  display: flex;
+  width: auto;
+  margin: 0;
+  gap: 0.35rem;
+  transform: translateX(-50%);
+}
+#pastWinnersCarousel .winners-indicators [data-bs-target] {
+  width: 6px;
+  height: 6px;
+  margin: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  opacity: 1;
+  transition: width 0.3s ease, background 0.3s ease;
+}
+#pastWinnersCarousel .winners-indicators [data-bs-target].active {
+  width: 20px;
+  border-radius: 10px;
+  background: var(--winners-accent);
+  box-shadow: 0 0 8px rgba(139, 92, 246, 0.4);
+}
+#pastWinnersCarousel .winners-count {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: "Anton", sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+}
+#pastWinnersCarousel .winners-count span {
+  color: var(--winners-accent-light);
+}
+#pastWinnersCarousel .winners-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  gap: 0.7rem;
+  color: var(--winners-muted);
+}
+#pastWinnersCarousel .winners-loading .spinner-border {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--winners-accent);
+}
+#pastWinnersCarousel .winners-message {
+  padding: 2rem 1.5rem;
+  text-align: center;
+  border: 1px solid var(--winners-border);
+  border-radius: 12px;
+  background: var(--winners-card);
+}
+#pastWinnersCarousel .winners-message h3 {
+  margin: 0.7rem 0 0.4rem;
+  color: var(--winners-text);
+  font-family: "Anton", sans-serif;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+}
+#pastWinnersCarousel .winners-message p {
+  margin: 0;
+  color: var(--winners-muted);
+  font-size: 0.85rem;
+}
+#pastWinnersCarousel .winners-message-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  margin: 0 auto;
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  border-radius: 50%;
+  color: var(--winners-accent-light);
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 992px) {
+  #pastWinnersCarousel .winners-header {
+    max-width: 100%;
+    padding-right: 0;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  #pastWinnersCarousel .winners-title {
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+  }
+  #pastWinnersCarousel .winners-subtitle {
+    margin: 0.8rem auto 0;
+  }
+  #pastWinnersCarousel .winners-divider {
+    justify-content: center;
+    margin: 1rem auto 0;
+  }
+  #pastWinnersCarousel .winners-carousel {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  #pastWinnersCarousel .winner-card {
+    min-height: 360px;
+    max-height: 360px;
+  }
+  #pastWinnersCarousel .winner-image-wrapper {
+    height: 240px;
+    min-height: 240px;
+  }
+}
+@media (max-width: 768px) {
+  #pastWinnersCarousel {
+    padding: 3rem 0;
+  }
+  #pastWinnersCarousel .winners-header {
+    margin-bottom: 1.5rem;
+  }
+  #pastWinnersCarousel .winners-title {
+    font-size: clamp(2.5rem, 10vw, 3.5rem);
+  }
+  #pastWinnersCarousel .winners-carousel {
+    max-width: 280px;
+    padding-bottom: 2rem;
+  }
+  #pastWinnersCarousel .winner-card {
+    min-height: 340px;
+    max-height: 340px;
+    border-radius: 10px;
+  }
+  #pastWinnersCarousel .winner-image-wrapper {
+    height: 220px;
+    min-height: 220px;
+  }
+  #pastWinnersCarousel .winner-image {
+    -o-object-position: center 25%;
+       object-position: center 25%;
+  }
+  #pastWinnersCarousel .winner-info {
+    min-height: 90px;
+    padding: 0.8rem 1rem;
+  }
+  #pastWinnersCarousel .winner-name {
+    font-size: clamp(1.1rem, 4vw, 1.3rem);
+  }
+  #pastWinnersCarousel .winner-number,
+  #pastWinnersCarousel .winner-trophy {
+    width: 28px;
+    height: 28px;
+    top: 0.6rem;
+  }
+  #pastWinnersCarousel .winner-number {
+    left: 0.6rem;
+  }
+  #pastWinnersCarousel .winner-trophy {
+    right: 0.6rem;
+  }
+  #pastWinnersCarousel .winners-control {
+    top: auto;
+    bottom: 0;
+    width: 34px;
+    height: 34px;
+    margin: 0;
+  }
+  #pastWinnersCarousel .carousel-control-prev {
+    left: 0;
+  }
+  #pastWinnersCarousel .carousel-control-next {
+    right: 0;
+  }
+  #pastWinnersCarousel .winners-control-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+  #pastWinnersCarousel .winners-indicators {
+    bottom: -1.3rem;
+  }
+}
+@media (max-width: 480px) {
+  #pastWinnersCarousel {
+    padding: 2.5rem 0;
+  }
+  #pastWinnersCarousel .winners-title {
+    font-size: clamp(2rem, 12vw, 2.8rem);
+  }
+  #pastWinnersCarousel .winners-carousel {
+    max-width: 260px;
+  }
+  #pastWinnersCarousel .winner-card {
+    min-height: 320px;
+    max-height: 320px;
+  }
+  #pastWinnersCarousel .winner-image-wrapper {
+    height: 200px;
+    min-height: 200px;
+  }
+  #pastWinnersCarousel .winner-info {
+    min-height: 80px;
+    padding: 0.7rem 0.9rem;
+  }
+  #pastWinnersCarousel .winner-label {
+    font-size: 0.5rem;
+  }
+  #pastWinnersCarousel .winner-name {
+    font-size: 1.1rem;
+  }
+  #pastWinnersCarousel .winner-number,
+  #pastWinnersCarousel .winner-trophy {
+    width: 26px;
+    height: 26px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #pastWinnersCarousel .winner-card,
+  #pastWinnersCarousel .winner-image,
+  #pastWinnersCarousel .winners-control-icon,
+  #pastWinnersCarousel .winners-indicators [data-bs-target] {
+    transition: none;
   }
 }
 /*==================== GOOGLE FONTS ====================*/
