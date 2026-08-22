@@ -1,16 +1,197 @@
 .footer {
-    background-color: var(--title-color);
+    --footer-bg: #0d0a1a;
+    --footer-text: #d1d1d1;
+    --footer-text-hover: #a78bfa;
+    --footer-accent: #8b5cf6;
+    --footer-border: rgba(255, 255, 255, 0.08);
 
-    a {
-        color: var(--text-color-light);
-        transition: color 0.3s ease;
+    background-color: var(--footer-bg);
+    border-top: 1px solid var(--footer-border);
+    padding: $m-2 0;
+    margin-top: auto;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
 
-        &:hover {
-            color: var(--text-color-light) !important;
+    // =====================================================
+    // COPYRIGHT
+    // =====================================================
+
+    .footer-copyright {
+        text-align: left;
+
+        p {
+            margin: 0;
+            color: var(--footer-text);
+            font-size: $small-font-size;
+            line-height: 1.5;
+
+            &:first-child {
+                font-family: $body-font;
+                font-size: 0.9rem;
+                letter-spacing: 0.05em;
+                color: #fff;
+                text-transform: uppercase;
+            }
+
+            &:last-child {
+                font-size: 0.8rem;
+                opacity: 0.7;
+            }
         }
     }
 
-    p {
-        color: var(--text-color-light);
+    // =====================================================
+    // REDES SOCIALES
+    // =====================================================
+
+    .footer-social {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: $m-0-75;
+    }
+
+    .footer-social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        color: var(--footer-text);
+        font-size: 1.1rem;
+        border: 1px solid var(--footer-border);
+        border-radius: 50%;
+        text-decoration: none;
+        transition:
+            color 0.3s ease,
+            background-color 0.3s ease,
+            border-color 0.3s ease,
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
+
+        &:hover {
+            color: #fff;
+            background-color: rgba(139, 92, 246, 0.2);
+            border-color: var(--footer-accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(139, 92, 246, 0.3);
+        }
+    }
+
+    // =====================================================
+    // ENLACES LEGALES
+    // =====================================================
+
+    .footer-links {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: $m-0-75;
+        flex-wrap: wrap;
+    }
+
+    .footer-link {
+        color: var(--footer-text);
+        font-size: $small-font-size;
+        text-decoration: none;
+        transition: color 0.3s ease, text-shadow 0.3s ease;
+
+        &:hover {
+            color: var(--footer-text-hover);
+            text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+        }
+    }
+
+    .footer-separator {
+        color: rgba(255, 255, 255, 0.3);
+        font-size: $small-font-size;
+    }
+}
+
+
+// =============================================================
+// TABLET
+// =============================================================
+
+@media (max-width: 992px) {
+    .footer {
+        .footer-copyright {
+            text-align: center;
+        }
+
+        .footer-links {
+            justify-content: center;
+        }
+    }
+}
+
+
+// =============================================================
+// MOBILE
+// =============================================================
+
+@media (max-width: 768px) {
+    .footer {
+        padding: $m-1-5 0;
+
+        .footer-social-link {
+            width: 35px;
+            height: 35px;
+            font-size: 1rem;
+        }
+
+        .footer-links {
+            flex-direction: column;
+            gap: $m-0-5;
+        }
+
+        .footer-separator {
+            display: none; // Ocultar separador en mobile
+        }
+    }
+}
+
+
+// =============================================================
+// MOBILE PEQUEÑO
+// =============================================================
+
+@media (max-width: 480px) {
+    .footer {
+        padding: $m-1 0;
+
+        .footer-copyright {
+            p:first-child {
+                font-size: 0.85rem;
+            }
+
+            p:last-child {
+                font-size: 0.75rem;
+            }
+        }
+
+        .footer-social-link {
+            width: 32px;
+            height: 32px;
+            font-size: 0.9rem;
+        }
+
+        .footer-link {
+            font-size: 0.75rem;
+        }
+    }
+}
+
+
+// =============================================================
+// REDUCIR ANIMACIONES
+// =============================================================
+
+@media (prefers-reduced-motion: reduce) {
+    .footer {
+
+        .footer-social-link,
+        .footer-link {
+            transition: none;
+        }
     }
 }

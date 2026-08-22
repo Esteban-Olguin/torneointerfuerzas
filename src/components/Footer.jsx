@@ -1,39 +1,69 @@
+import { NavLink } from "react-router-dom";
+
 export default function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="footer py-3 mt-auto shadow-sm">
+        <footer className="footer" aria-label="Pie de página">
             <div className="container">
-                <div className="row text-light text-center text-sm-start">
-
-                    {/* Columna 1: Texto legal */}
-                    <div className="col-sm-4 d-flex flex-column align-items-center align-items-sm-start mb-2 mb-sm-0">
-                        <p className="mb-0 small">
-                            © {currentYear} Torneo Interfuerzas <br />| Todos los derechos reservados
-                        </p>
+                <div className="row align-items-center g-3">
+                    {/* Columna 1: Copyright */}
+                    <div className="col-lg-4">
+                        <div className="footer-copyright">
+                            <p>
+                                © {currentYear} Torneo Interfuerzas
+                            </p>
+                            <p>
+                                Todos los derechos reservados
+                            </p>
+                        </div>
                     </div>
 
                     {/* Columna 2: Redes sociales */}
-                    <div className="col-sm-4 d-flex justify-content-center align-items-center gap-3 mb-2 mb-sm-0">
-                        <a href="https://facebook.com/tuCuenta" target="_blank" rel="noopener noreferrer" className="text-light" aria-label="Facebook">
-                            <i className="fab fa-facebook fa-lg"></i>
-                        </a>
-                        <a href="https://instagram.com/tuCuenta" target="_blank" rel="noopener noreferrer" className="text-light" aria-label="Instagram">
-                            <i className="fab fa-instagram fa-lg"></i>
-                        </a>
-                        <a href="https://wa.me/549123456789" target="_blank" rel="noopener noreferrer" className="text-light" aria-label="WhatsApp">
-                            <i className="fab fa-whatsapp fa-lg"></i>
-                        </a>
+                    <div className="col-lg-4">
+                        <div className="footer-social">
+                            <a
+                                href="https://instagram.com/tuCuenta"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="footer-social-link"
+                                aria-label="Instagram"
+                            >
+                                <i className="fab fa-instagram"></i>
+                            </a>
+                            <a
+                                href="https://tiktok.com/@tuCuenta"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="footer-social-link"
+                                aria-label="TikTok"
+                            >
+                                <i className="fab fa-tiktok"></i>
+                            </a>
+                            <a
+                                href="https://youtube.com/@tuCuenta"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="footer-social-link"
+                                aria-label="YouTube"
+                            >
+                                <i className="fab fa-youtube"></i>
+                            </a>
+                        </div>
                     </div>
 
                     {/* Columna 3: Enlaces legales */}
-                    <div className="col-sm-4 d-flex flex-column align-items-center align-items-sm-end mb-2 mb-sm-0">
-                        <p className="mb-0 small">
-                            <a href="/Terms" className="text-light text-decoration-none">Términos y Condiciones <br /></a> |{" "}
-                            <a href="/Privacy" className="text-light text-decoration-none"> Política de Privacidad</a>
-                        </p>
+                    <div className="col-lg-4">
+                        <div className="footer-links">
+                            <NavLink to="/terminos" className="footer-link">
+                                Términos y Condiciones
+                            </NavLink>
+                            <span className="footer-separator">|</span>
+                            <NavLink to="/privacidad" className="footer-link">
+                                Política de Privacidad
+                            </NavLink>
+                        </div>
                     </div>
-
                 </div>
             </div>
         </footer>
