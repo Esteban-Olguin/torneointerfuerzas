@@ -1,72 +1,314 @@
-.calendar {
-    font-family: "Anton", sans-serif;
-    color: var(--white);
+#calendarSection {
+    --calendar-bg: #0a0a0a;
+    --calendar-card: #1b1b1b;
+    --calendar-card-light: #242424;
+    --calendar-text: #f5f5f5;
+    --calendar-muted: #d1d1d1;
+    --calendar-accent: #fbbf24; // Amarillo dorado
+    --calendar-accent-light: #fcd34d;
+    --calendar-border: rgba(255, 255, 255, 0.08);
+
     position: relative;
-    background: linear-gradient(to top,
-            rgba(0, 0, 0, 0.8),
-            rgba(0, 0, 0, 0.4)),
-        url("/assets/img/organizers_bg.png");
+    overflow: hidden;
+
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+
+    padding: $m-3 0;
+
+    /*
+     * Imagen de fondo estática
+     */
+    background-image: url('/assets/img/organizers_bg.png');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
-    padding: 5rem 2rem;
-    border-top: 4px solid var(--text-color);
+    background-repeat: no-repeat;
 
-    .section {
-        &__title {
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
-            font-size: clamp(2rem, 5vw, 4rem);
-            font-family: "Anton", sans-serif;
-            margin-bottom: 1.5rem;
-        }
+    /*
+     * Overlay oscuro para mejorar legibilidad
+     */
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+            linear-gradient(135deg,
+                rgba(10, 10, 10, 0.95) 0%,
+                rgba(10, 10, 10, 0.7) 50%,
+                rgba(10, 10, 10, 0.9) 100%);
+        z-index: $z-tooltip;
+    }
 
-        &__subtitle {
-            font-weight: 100 !important;
-            font-size: $h2-font-size;
+    /*
+     * Overlay con acento dorado sutil
+     */
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+            radial-gradient(circle at 50% 50%,
+                rgba(251, 191, 36, 0.05),
+                transparent 50%);
+        z-index: $z-tooltip;
+        pointer-events: none;
+    }
+
+
+    // =====================================================
+    // HEADER - Centrado
+    // =====================================================
+
+    .calendar-header {
+        position: relative;
+        z-index: $z-tooltip + 1;
+        max-width: 700px;
+        margin: 0 auto $m-2-5;
+        text-align: center;
+    }
+
+    .calendar-eyebrow {
+        display: inline-block;
+        margin-bottom: $m-0-75;
+        color: var(--calendar-accent-light);
+        font-family: $body-font;
+        font-size: 1.1rem;
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .calendar-title {
+        margin: 0;
+        color: var(--calendar-text);
+        font-family: $body-font;
+        font-size: clamp(3rem, 6vw, 4.5rem);
+        line-height: 1;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+        text-shadow:
+            2px 2px 6px rgba(0, 0, 0, 0.6),
+            0 0 30px rgba(251, 191, 36, 0.3);
+    }
+
+    .calendar-subtitle {
+        max-width: 500px;
+        margin: $m-1-5 auto 0;
+        color: var(--calendar-muted);
+        font-size: 1.3rem;
+        line-height: 1.5;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .calendar-divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: $m-0-75;
+        width: 200px;
+        margin: $m-2 auto 0;
+
+        span:not(.calendar-divider-star) {
+            width: 75px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.3);
         }
     }
 
-    table {
-        border-radius: 8px;
-        overflow: hidden;
-
-        th {
-            background-color: rgba(255, 255, 255, 0.05);
-            color: var(--warning);
-            text-transform: uppercase;
-            font-weight: lighter;
-        }
-
-        td {
-            background-color: rgba(0, 0, 0, 0.3);
-        }
+    .calendar-divider-star {
+        color: var(--calendar-accent);
+        font-size: 1.4rem;
+        text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
     }
 
-    .copa-img {
-        height: auto;
+
+    // =====================================================
+    // TABLA - Centrada
+    // =====================================================
+
+    .table-responsive {
+        position: relative;
+        z-index: $z-tooltip + 1;
+        max-width: 800px;
         margin: 0 auto;
-        display: block;
-        filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
-        transition: transform 0.4s ease, filter 0.4s ease;
+    }
 
-        &:hover {
-            transform: scale(1.05);
-            filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.9));
+    .calendar-table {
+        margin: 0;
+        border-radius: 16px;
+        overflow: hidden;
+        background: rgba(27, 27, 27, 0.8);
+        border: 1px solid var(--calendar-border);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+
+        thead {
+            th {
+                background: rgba(251, 191, 36, 0.1);
+                color: var(--calendar-accent);
+                font-family: $body-font;
+                font-size: 0.85rem;
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+                text-align: center;
+                padding: 1rem 0.75rem;
+                border-bottom: 2px solid rgba(251, 191, 36, 0.3);
+            }
+        }
+
+        tbody {
+            td {
+                background: transparent;
+                color: var(--calendar-text);
+                font-size: 0.95rem;
+                text-align: center;
+                padding: 0.9rem 0.75rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                transition: background 0.3s ease;
+            }
+
+            tr {
+                transition: background 0.3s ease;
+
+                &:hover {
+                    background: rgba(251, 191, 36, 0.05);
+                }
+
+                &:last-child {
+                    td {
+                        border-bottom: none;
+                    }
+                }
+            }
         }
     }
 }
 
-/* Responsivo */
-@media (min-width: 768px) {
-    .calendar .copa-img {
-        max-width: 60%;
-        margin-bottom: 0;
+
+// =============================================================
+// TABLET
+// =============================================================
+
+@media (max-width: 992px) {
+    #calendarSection {
+        .calendar-title {
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+        }
+
+        .calendar-table {
+            max-width: 700px;
+        }
     }
 }
 
-@media (max-width: 576px) {
-    .calendar .copa-img {
-        display: none;
+
+// =============================================================
+// MOBILE
+// =============================================================
+
+@media (max-width: 768px) {
+    #calendarSection {
+        padding: $m-2-5 0;
+
+        .calendar-header {
+            margin-bottom: $m-2;
+        }
+
+        .calendar-title {
+            font-size: clamp(2.2rem, 8vw, 3rem);
+        }
+
+        .calendar-eyebrow {
+            font-size: 1rem;
+        }
+
+        .calendar-subtitle {
+            font-size: 1.1rem;
+        }
+
+        .calendar-table {
+            border-radius: 12px;
+
+            thead {
+                th {
+                    font-size: 0.75rem;
+                    padding: 0.8rem 0.5rem;
+                }
+            }
+
+            tbody {
+                td {
+                    font-size: 0.85rem;
+                    padding: 0.7rem 0.5rem;
+                }
+            }
+        }
+    }
+}
+
+
+// =============================================================
+// MOBILE PEQUEÑO
+// =============================================================
+
+@media (max-width: 480px) {
+    #calendarSection {
+        padding: $m-2 0;
+
+        .calendar-title {
+            font-size: clamp(2rem, 10vw, 2.5rem);
+        }
+
+        .calendar-eyebrow {
+            font-size: 0.9rem;
+            letter-spacing: 0.3em;
+        }
+
+        .calendar-subtitle {
+            font-size: 1rem;
+        }
+
+        .calendar-divider {
+            width: 150px;
+
+            span:not(.calendar-divider-star) {
+                width: 50px;
+                height: 1px;
+            }
+        }
+
+        .calendar-table {
+            border-radius: 10px;
+
+            thead {
+                th {
+                    font-size: 0.7rem;
+                    padding: 0.7rem 0.4rem;
+                    letter-spacing: 0.1em;
+                }
+            }
+
+            tbody {
+                td {
+                    font-size: 0.8rem;
+                    padding: 0.6rem 0.4rem;
+                }
+            }
+        }
+    }
+}
+
+
+// =============================================================
+// REDUCIR ANIMACIONES
+// =============================================================
+
+@media (prefers-reduced-motion: reduce) {
+    #calendarSection {
+
+        .calendar-table tbody tr,
+        .calendar-table tbody td {
+            transition: none;
+        }
     }
 }

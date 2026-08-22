@@ -3,66 +3,76 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
     return (
-        <section
-            className="hero section d-flex align-items-center text-center text-light"
-            style={{
-                backgroundImage: "url('/public/assets/img/hero-football-bg.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                minHeight: "100vh",
-            }}
-        >
-            <div className="container container-hero grid">
-                <div>
-                    {/* Subtítulo animado: entra desde arriba */}
-                    <motion.h1
-                        className="section__subtitle fw-bold text-uppercase"
-                        initial={{ opacity: 0, y: -50 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ type: "spring", duration: 0.8 }}
-                    >
-                        Torneo Interfuerzas
-                    </motion.h1>
+        <section id="heroSection" className="hero-section">
+            <div className="container">
+                <div className="row justify-content-center align-items-center min-vh-100">
+                    {/* Columna centrada */}
+                    <div className="col-lg-10">
+                        <div className="hero-header text-center">
+                            {/* Subtítulo animado */}
+                            <motion.span
+                                className="hero-eyebrow"
+                                initial={{ opacity: 0, y: -30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ type: "spring", duration: 0.8 }}
+                            >
+                                Torneo Interfuerzas
+                            </motion.span>
 
-                    {/* Título animado: escala desde pequeño */}
-                    <motion.h2
-                        className="section__title fw-bold text-uppercase"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.5 }}
-                    >
-                        Copa Chots
-                    </motion.h2>
+                            {/* Título animado */}
+                            <motion.h1
+                                className="hero-title"
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 0.5 }}
+                            >
+                                Copa Chots
+                            </motion.h1>
 
-                    {/* Texto animado: aparece con delay */}
-                    <motion.span
-                        className="section__text mb-2"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.5, duration: 0.8 }}
-                    >
-                        ¡El torneo que une nuestras fuerzas!
-                    </motion.span>
+                            {/* Descripción animada */}
+                            <motion.p
+                                className="hero-subtitle"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.5, duration: 0.8 }}
+                            >
+                                ¡El torneo que une nuestras fuerzas!
+                            </motion.p>
 
-                    <motion.p
-                        className="mb-4"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.7, duration: 0.8 }}
-                    >
-                        Participá y ganá increíbles premios.
-                    </motion.p>
+                            <motion.p
+                                className="hero-text"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.7, duration: 0.8 }}
+                            >
+                                Participá y ganá increíbles premios.
+                            </motion.p>
 
-                    {/* Botón animado: aparece con rebote */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 1, type: "spring", stiffness: 120 }}
-                    >
-                        <NavLink to="/sorteo" className="btn btn--small">
-                            Comprar Números <i className="fas fa-ticket-alt btn__icon"></i>
-                        </NavLink>
-                    </motion.div>
+                            {/* Divider decorativo */}
+                            <motion.div
+                                className="hero-divider"
+                                initial={{ opacity: 0, scale: 0 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: 0.9, duration: 0.5 }}
+                            >
+                                <span />
+                                <span className="hero-divider-star">✦</span>
+                                <span />
+                            </motion.div>
+
+                            {/* Botón animado */}
+                            <motion.div
+                                className="hero-actions"
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 1.2, type: "spring", stiffness: 120 }}
+                            >
+                                <NavLink to="/sorteo" className="hero-btn">
+                                    Comprar Números <i className="fas fa-ticket-alt hero-btn-icon"></i>
+                                </NavLink>
+                            </motion.div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

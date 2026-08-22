@@ -11,7 +11,7 @@
     position: relative;
     overflow: hidden;
 
-    padding: 4rem 0;
+    padding: $m-3 0;
 
     background:
         radial-gradient(circle at 50% 0%,
@@ -21,38 +21,39 @@
 
 
     // =====================================================
-    // HEADER - Alineado a la izquierda con título GRANDE
+    // HEADER - Centrado
     // =====================================================
 
     .winners-header {
-        max-width: 450px;
-        margin: 0;
-        text-align: left;
-        padding-right: 2rem;
+        max-width: 600px;
+        margin: 0 auto $m-2-5;
+        text-align: center;
     }
 
     .winners-eyebrow {
         display: inline-block;
-        margin-bottom: 0.75rem;
+        margin-bottom: $m-0-75;
         color: var(--winners-accent-light);
-        font-family: "Anton", sans-serif;
+        font-family: $body-font;
         font-size: 0.9rem;
         letter-spacing: 0.35em;
+        text-transform: uppercase;
     }
 
     .winners-title {
         margin: 0;
         color: var(--winners-text);
-        font-family: "Anton", sans-serif;
-        font-size: clamp(3rem, 5vw, 4.5rem); // Mucho más grande
+        font-family: $body-font;
+        font-size: clamp(3rem, 5vw, 4.5rem);
         line-height: 1;
         text-transform: uppercase;
         letter-spacing: 0.02em;
+        text-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
     }
 
     .winners-subtitle {
-        max-width: 400px;
-        margin: 1rem 0 0;
+        max-width: 500px;
+        margin: $m-1 auto 0;
         color: var(--winners-muted);
         font-size: 1rem;
         line-height: 1.5;
@@ -61,10 +62,10 @@
     .winners-divider {
         display: flex;
         align-items: center;
-        justify-content: flex-start;
-        gap: 0.7rem;
+        justify-content: center;
+        gap: $m-0-75;
         width: 180px;
-        margin: 1.25rem 0 0;
+        margin: $m-1-5 auto 0;
 
         span:not(.winners-divider-star) {
             width: 65px;
@@ -76,35 +77,30 @@
     .winners-divider-star {
         color: var(--winners-accent-light);
         font-size: 1rem;
+        text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
     }
 
 
     // =====================================================
-    // CAROUSEL - Contenido y sin overflow
+    // CAROUSEL - Centrado
     // =====================================================
 
     .winners-carousel {
         position: relative;
-        max-width: 320px; // Más pequeño
+        max-width: 350px;
         margin: 0 auto;
-        padding-bottom: 2.5rem;
-
-        // Evita que las slides se salgan
+        padding-bottom: $m-2-5;
         overflow: hidden;
     }
 
     .carousel-inner {
-        // Contenido dentro de los límites
         overflow: hidden;
-
-        // Asegura que las slides no se desplacen fuera
         border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
 
     .carousel-item {
         padding: 0;
-
-        // Transición más suave y contenida
         transition: transform 0.6s ease-in-out;
     }
 
@@ -118,12 +114,6 @@
         display: flex;
         flex-direction: column;
 
-        /*
-         * Dimensiones pequeñas
-         * Ancho: ~320px
-         * Alto: ~380px
-         * Proporción: 1:1.19 (vertical)
-         */
         width: 100%;
         min-height: 380px;
         max-height: 380px;
@@ -139,7 +129,9 @@
 
         &:hover {
             transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.4),
+                0 0 20px rgba(139, 92, 246, 0.2);
         }
     }
 
@@ -150,9 +142,9 @@
 
     .winner-number {
         position: absolute;
-        z-index: 5;
-        top: 0.7rem;
-        left: 0.7rem;
+        z-index: $z-tooltip;
+        top: $m-0-75;
+        left: $m-0-75;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -163,8 +155,9 @@
         background: rgba(0, 0, 0, 0.45);
         backdrop-filter: blur(8px);
         color: rgba(255, 255, 255, 0.9);
-        font-family: "Anton", sans-serif;
+        font-family: $body-font;
         font-size: 0.6rem;
+        letter-spacing: 0.05em;
     }
 
 
@@ -175,14 +168,8 @@
     .winner-image-wrapper {
         position: relative;
         width: 100%;
-
-        /*
-         * Altura pequeña pero suficiente
-         * Proporción 4:3.5 (vertical)
-         */
         height: 260px;
         min-height: 260px;
-
         overflow: hidden;
         background: #1a1a1a;
     }
@@ -193,9 +180,6 @@
         height: 100%;
         min-height: 0;
 
-        /*
-         * Optimizaciones de calidad
-         */
         object-fit: cover;
         object-position: center 20%;
         image-rendering: -webkit-optimize-contrast;
@@ -204,9 +188,6 @@
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
 
-        /*
-         * Asegura que la imagen no se distorsione
-         */
         max-width: 100%;
         max-height: 100%;
 
@@ -240,8 +221,8 @@
 
     .winner-trophy {
         position: absolute;
-        top: 0.7rem;
-        right: 0.7rem;
+        top: $m-0-75;
+        right: $m-0-75;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -255,6 +236,7 @@
         span {
             color: var(--winners-accent-light);
             font-size: 0.8rem;
+            animation: trophyGlow 2s ease-in-out infinite;
         }
     }
 
@@ -268,31 +250,34 @@
         flex-direction: column;
         justify-content: center;
         flex: 1;
-        padding: 0.9rem 1rem;
+        padding: $m-1;
+        text-align: center; // Centrado
     }
 
     .winner-label {
         display: block;
-        margin-bottom: 0.25rem;
+        margin-bottom: $m-0-25;
         color: var(--winners-accent-light);
-        font-family: "Anton", sans-serif;
+        font-family: $body-font;
         font-size: 0.55rem;
         letter-spacing: 0.18em;
+        text-transform: uppercase;
     }
 
     .winner-name {
         margin: 0;
         color: var(--winners-text);
-        font-family: "Anton", sans-serif;
+        font-family: $body-font;
         font-size: clamp(1.1rem, 1.5vw, 1.3rem);
         line-height: 1.1;
         text-transform: uppercase;
+        letter-spacing: 0.02em;
     }
 
     .winner-accent {
         width: 35px;
         height: 2px;
-        margin-top: 0.5rem;
+        margin: $m-0-5 auto 0; // Centrado
         border-radius: 10px;
         background: var(--winners-accent);
         box-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
@@ -309,20 +294,23 @@
         width: 34px;
         height: 34px;
         margin-top: -17px;
-        opacity: 1;
-        z-index: 10;
-
-        // Asegura que no se salgan del carousel
+        opacity: 0.7;
+        z-index: $z-tooltip;
         background: transparent;
         border: none;
+        transition: opacity 0.3s ease;
+
+        &:hover {
+            opacity: 1;
+        }
     }
 
     .carousel-control-prev {
-        left: 0.35rem;
+        left: $m-0-5;
     }
 
     .carousel-control-next {
-        right: 0.35rem;
+        right: $m-0-5;
     }
 
     .winners-control-icon {
@@ -352,7 +340,7 @@
 
     .winners-indicators {
         position: absolute;
-        bottom: -1.5rem;
+        bottom: -$m-1-5;
         left: 50%;
         display: flex;
         width: auto;
@@ -385,14 +373,16 @@
     // =====================================================
 
     .winners-count {
+        margin-top: $m-1-5;
         text-align: center;
         color: rgba(255, 255, 255, 0.4);
-        font-family: "Anton", sans-serif;
+        font-family: $body-font;
         font-size: 0.6rem;
         letter-spacing: 0.18em;
 
         span {
             color: var(--winners-accent-light);
+            font-size: 0.7rem;
         }
     }
 
@@ -406,14 +396,26 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        min-height: 200px;
-        gap: 0.7rem;
+        min-height: 250px;
+        gap: $m-0-75;
         color: var(--winners-muted);
+        text-align: center;
 
         .spinner-border {
-            width: 1.5rem;
-            height: 1.5rem;
+            width: 2rem;
+            height: 2rem;
             color: var(--winners-accent);
+        }
+
+        span {
+            font-family: $body-font;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+        }
+
+        small {
+            font-size: 0.8rem;
+            color: var(--winners-muted);
         }
     }
 
@@ -423,16 +425,19 @@
     // =====================================================
 
     .winners-message {
-        padding: 2rem 1.5rem;
+        max-width: 400px;
+        margin: 0 auto;
+        padding: $m-2 $m-1-5;
         text-align: center;
         border: 1px solid var(--winners-border);
         border-radius: 12px;
         background: var(--winners-card);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 
         h3 {
-            margin: 0.7rem 0 0.4rem;
+            margin: $m-0-75 0 $m-0-5;
             color: var(--winners-text);
-            font-family: "Anton", sans-serif;
+            font-family: $body-font;
             font-size: 1.1rem;
             text-transform: uppercase;
         }
@@ -448,14 +453,44 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 35px;
-        height: 35px;
+        width: 40px;
+        height: 40px;
         margin: 0 auto;
         border: 1px solid rgba(139, 92, 246, 0.4);
         border-radius: 50%;
         color: var(--winners-accent-light);
         font-weight: bold;
-        font-size: 0.9rem;
+        font-size: 1rem;
+        animation: pulse 2s ease-in-out infinite;
+    }
+}
+
+
+// =====================================================
+// ANIMACIONES
+// =====================================================
+
+@keyframes trophyGlow {
+
+    0%,
+    100% {
+        text-shadow: 0 0 5px rgba(139, 92, 246, 0.5);
+    }
+
+    50% {
+        text-shadow: 0 0 15px rgba(139, 92, 246, 0.8);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
     }
 }
 
@@ -468,27 +503,15 @@
     #pastWinnersCarousel {
         .winners-header {
             max-width: 100%;
-            padding-right: 0;
-            margin-bottom: 2rem;
-            text-align: center;
+            margin-bottom: $m-2;
         }
 
         .winners-title {
-            font-size: clamp(2.5rem, 6vw, 3.5rem); // Grande también en tablet
-        }
-
-        .winners-subtitle {
-            margin: 0.8rem auto 0;
-        }
-
-        .winners-divider {
-            justify-content: center;
-            margin: 1rem auto 0;
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
         }
 
         .winners-carousel {
-            max-width: 300px;
-            margin: 0 auto;
+            max-width: 320px;
         }
 
         .winner-card {
@@ -510,19 +533,19 @@
 
 @media (max-width: 768px) {
     #pastWinnersCarousel {
-        padding: 3rem 0;
+        padding: $m-2-5 0;
 
         .winners-header {
-            margin-bottom: 1.5rem;
+            margin-bottom: $m-1-5;
         }
 
         .winners-title {
-            font-size: clamp(2.5rem, 10vw, 3.5rem); // Grande en mobile
+            font-size: clamp(2.2rem, 8vw, 3rem);
         }
 
         .winners-carousel {
-            max-width: 280px;
-            padding-bottom: 2rem;
+            max-width: 300px;
+            padding-bottom: $m-2;
         }
 
         .winner-card {
@@ -542,7 +565,7 @@
 
         .winner-info {
             min-height: 90px;
-            padding: 0.8rem 1rem;
+            padding: $m-0-75 $m-1;
         }
 
         .winner-name {
@@ -553,15 +576,15 @@
         .winner-trophy {
             width: 28px;
             height: 28px;
-            top: 0.6rem;
+            top: $m-0-5;
         }
 
         .winner-number {
-            left: 0.6rem;
+            left: $m-0-5;
         }
 
         .winner-trophy {
-            right: 0.6rem;
+            right: $m-0-5;
         }
 
         .winners-control {
@@ -587,7 +610,7 @@
         }
 
         .winners-indicators {
-            bottom: -1.3rem;
+            bottom: -$m-1;
         }
     }
 }
@@ -599,14 +622,14 @@
 
 @media (max-width: 480px) {
     #pastWinnersCarousel {
-        padding: 2.5rem 0;
+        padding: $m-2 0;
 
         .winners-title {
-            font-size: clamp(2rem, 12vw, 2.8rem); // Mantener grande
+            font-size: clamp(2rem, 10vw, 2.5rem);
         }
 
         .winners-carousel {
-            max-width: 260px;
+            max-width: 280px;
         }
 
         .winner-card {
@@ -621,7 +644,7 @@
 
         .winner-info {
             min-height: 80px;
-            padding: 0.7rem 0.9rem;
+            padding: $m-0-5 $m-0-75;
         }
 
         .winner-label {
@@ -651,7 +674,10 @@
         .winner-card,
         .winner-image,
         .winners-control-icon,
-        .winners-indicators [data-bs-target] {
+        .winners-indicators [data-bs-target],
+        .winner-trophy span,
+        .winners-message-icon {
+            animation: none;
             transition: none;
         }
     }

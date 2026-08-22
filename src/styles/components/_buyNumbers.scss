@@ -1,152 +1,309 @@
-.buy-numbers {
-    background: linear-gradient(to top,
-            rgba(0, 0, 0, 0.1),
-            rgba(0, 0, 0, 0.4)),
-        url("/assets/img/buy_numbers_bg.png");
+#buyNumbersSection {
+    --buy-bg: #0a0a0a;
+    --buy-card: #1b1b1b;
+    --buy-card-light: #242424;
+    --buy-text: #f5f5f5;
+    --buy-muted: #d1d1d1;
+    --buy-accent: #fbbf24; // Amarillo dorado
+    --buy-accent-light: #fcd34d;
+    --buy-border: rgba(255, 255, 255, 0.08);
+
+    position: relative;
+    overflow: hidden;
+
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+
+    padding: $m-3 0;
+
+    /*
+     * Imagen de fondo estática
+     */
+    background-image: url('/assets/img/buy_numbers_bg.png');
     background-size: cover;
     background-position: center;
-    color: var(--white);
-    padding: 5rem 2rem;
-    border-top: 4px solid var(--text-color);
+    background-repeat: no-repeat;
 
-    .promo-box,
-    .prize-box {
-        background: rgba(0, 0, 0, 0.6);
-        border-radius: 8px;
+    /*
+     * Overlay oscuro para mejorar legibilidad
+     */
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+            linear-gradient(135deg,
+                rgba(10, 10, 10, 0.95) 0%,
+                rgba(10, 10, 10, 0.7) 50%,
+                rgba(10, 10, 10, 0.9) 100%);
+        z-index: $z-tooltip;
     }
 
-    .prize-box,
-    .prize-box {
-        background: rgba(0, 0, 0, 0.75);
-        border-radius: 14px;
-        box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
-        padding: 2rem;
-        text-align: center;
+    /*
+     * Overlay con acento dorado sutil
+     */
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+            radial-gradient(circle at 30% 50%,
+                rgba(251, 191, 36, 0.08),
+                transparent 50%);
+        z-index: $z-tooltip;
+        pointer-events: none;
+    }
+
+
+    // =====================================================
+    // HEADER - Alineado a la izquierda
+    // =====================================================
+
+    .buy-header {
         position: relative;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-        &::after {
-            content: "";
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            width: calc(100% + 4px);
-            height: calc(100% + 4px);
-            border-radius: inherit;
-            background-size: 200% 200%;
-            animation: shimmer 6s infinite linear;
-            z-index: -1;
-        }
-
-        &:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 0 40px rgba(255, 215, 0, 1);
-        }
-
-        h3 {
-            color: var(--yellow);
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        p {
-            color: #f1f1f1;
-            font-size: $small-font-size;
-            margin-top: 0.5rem;
-        }
-
-        .prize-img {
-            max-width: 32%;
-            height: auto;
-            margin: 0 auto 1rem;
-            display: block;
-            border-radius: 10px;
-            filter: drop-shadow(0 0 18px rgba(255, 215, 0, 0.7));
-            transition: transform 0.3s ease;
-
-            &:hover {
-                transform: scale(1.08);
-            }
-        }
-
-        /* Efecto decorativo extra: brillo animado en el borde */
-        &::after {
-            content: "";
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            width: calc(100% + 4px);
-            height: calc(100% + 4px);
-            border-radius: inherit;
-            background: linear-gradient(45deg,
-                    rgba(255, 215, 0, 0.4),
-                    transparent,
-                    rgba(255, 215, 0, 0.4));
-            background-size: 200% 200%;
-            animation: shimmer 6s infinite linear;
-            z-index: -1;
-        }
-    }
-
-    .section__title {
-        font-family: "Anton", sans-serif;
+        z-index: $z-tooltip + 1;
+        max-width: 550px;
+        margin: 0;
         text-align: left;
-        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
-        font-size: clamp(2rem, 5vw, 3.5rem);
-        margin-bottom: 1rem;
     }
 
-    .section__subtitle {
+    .buy-eyebrow {
+        display: inline-block;
+        margin-bottom: $m-0-75;
+        color: var(--buy-accent-light);
+        font-family: $body-font;
+        font-size: 1rem;
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .buy-title {
+        margin: 0;
+        color: var(--buy-text);
+        font-family: $body-font;
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        line-height: 1;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+        text-shadow:
+            2px 2px 6px rgba(0, 0, 0, 0.6),
+            0 0 30px rgba(251, 191, 36, 0.3);
+    }
+
+    .buy-subtitle {
+        max-width: 450px;
+        margin: $m-1-5 0 0;
+        color: var(--buy-muted);
         font-size: 1.2rem;
-        font-weight: 300;
-        text-align: left;
-        margin-bottom: 2rem;
+        line-height: 1.5;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
     }
+
+    .buy-divider {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: $m-0-75;
+        width: 180px;
+        margin: $m-2 0 0;
+
+        span:not(.buy-divider-star) {
+            width: 65px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+    }
+
+    .buy-divider-star {
+        color: var(--buy-accent);
+        font-size: 1.2rem;
+        text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+    }
+
+
+    // =====================================================
+    // CONTADOR
+    // =====================================================
 
     .countdown {
         display: flex;
-        justify-content: space-around;
-        margin-bottom: 2rem;
-
-        div {
-            text-align: center;
-
-            span {
-                font-size: 2rem;
-                font-weight: bold;
-                color: var(--yellow);
-                animation: pulse 1.5s infinite;
-            }
-
-            small {
-                font-size: 0.9rem;
-                color: var(--white);
-            }
-        }
+        justify-content: flex-start;
+        gap: $m-1-5;
+        margin-top: $m-2-5;
     }
 
-    .promo-img {
-        max-width: 80%;
+    .countdown-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 70px;
+        padding: $m-0-75 $m-1;
+        background: rgba(27, 27, 27, 0.8);
+        border: 1px solid var(--buy-border);
+        border-radius: 12px;
+        backdrop-filter: blur(8px);
     }
 
-    .btn {
-        background-color: var(--yellow);
-        color: var(--dark-grey);
-        font-weight: bold;
-        box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    .countdown-number {
+        color: var(--buy-accent);
+        font-family: $body-font;
+        font-size: 2.5rem;
+        line-height: 1;
+        text-shadow: 0 0 15px rgba(251, 191, 36, 0.5);
+        animation: pulse 1.5s infinite;
+    }
+
+    .countdown-label {
+        margin-top: $m-0-25;
+        color: var(--buy-muted);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+
+
+    // =====================================================
+    // BOTÓN
+    // =====================================================
+
+    .buy-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: $m-2-5;
+        padding: $m-1 $m-2-5;
+        background: var(--buy-accent);
+        color: #1a1a1a;
+        font-family: $body-font;
+        font-size: 1.1rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        text-decoration: none;
+        border-radius: 50px;
+        box-shadow:
+            0 0 25px rgba(251, 191, 36, 0.4),
+            0 10px 30px rgba(0, 0, 0, 0.3);
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
 
         &:hover {
-            background-color: var(--yellow);
-            color: var(--dark-grey);
-            transform: scale(1.05);
-            transition: transform 0.3s ease;
+            transform: translateY(-3px);
+            box-shadow:
+                0 0 40px rgba(251, 191, 36, 0.6),
+                0 15px 40px rgba(0, 0, 0, 0.4);
+            color: #1a1a1a;
         }
+
+        &:active {
+            transform: translateY(-1px);
+        }
+    }
+
+
+    // =====================================================
+    // CARD DE PREMIO
+    // =====================================================
+
+    .prize-card {
+        position: relative;
+        z-index: $z-tooltip + 1;
+        width: 100%;
+        max-width: 450px;
+        padding: $m-2;
+        background: rgba(27, 27, 27, 0.8);
+        border: 1px solid var(--buy-border);
+        border-radius: 20px;
+        text-align: center;
+        backdrop-filter: blur(8px);
+        box-shadow:
+            0 20px 50px rgba(0, 0, 0, 0.4),
+            0 0 30px rgba(251, 191, 36, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow:
+                0 25px 60px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(251, 191, 36, 0.4);
+        }
+    }
+
+    .prize-eyebrow {
+        display: inline-block;
+        margin-bottom: $m-0-75;
+        color: var(--buy-accent-light);
+        font-family: $body-font;
+        font-size: 0.85rem;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+    }
+
+    .prize-title {
+        margin: 0 0 $m-1-5;
+        color: var(--buy-text);
+        font-family: $body-font;
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        line-height: 1.1;
+        text-transform: uppercase;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .prize-image-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 300px;
+        height: 250px;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 16px;
+        background: #1a1a1a;
+        border: 1px solid var(--buy-border);
+    }
+
+    .prize-image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.3));
+        transition: transform 0.3s ease;
+    }
+
+    .prize-card:hover {
+        .prize-image {
+            transform: scale(1.05);
+        }
+    }
+
+    .prize-image-overlay {
+        position: absolute;
+        inset: 0;
+        background:
+            linear-gradient(135deg,
+                rgba(251, 191, 36, 0.1) 0%,
+                transparent 50%);
+        pointer-events: none;
+    }
+
+    .prize-accent {
+        width: 60px;
+        height: 3px;
+        margin: $m-1-5 auto 0;
+        border-radius: 10px;
+        background: var(--buy-accent);
+        box-shadow: 0 0 15px rgba(251, 191, 36, 0.5);
     }
 }
 
-/* Animación de pulso para los números del contador */
+
+// =====================================================
+// ANIMACIONES
+// =====================================================
+
 @keyframes pulse {
     0% {
         transform: scale(1);
@@ -164,103 +321,167 @@
     }
 }
 
-/* Animación de brillo */
-@keyframes shimmer {
-    0% {
-        background-position: 0% 50%;
-    }
 
-    100% {
-        background-position: 100% 50%;
-    }
-}
+// =============================================================
+// TABLET
+// =============================================================
 
-/* Media queries para responsividad */
 @media (max-width: 992px) {
-    .buy-numbers .section__title {
-        font-size: 2rem; // títulos más chicos en tablets
-    }
+    #buyNumbersSection {
+        .buy-header {
+            max-width: 100%;
+            text-align: center;
+            margin-bottom: $m-2-5;
+        }
 
-    .buy-numbers .section__subtitle {
-        font-size: 1rem;
-    }
+        .buy-title {
+            font-size: clamp(2.2rem, 5vw, 3rem);
+        }
 
-    .buy-numbers .countdown span {
-        font-size: 1.5rem;
-    }
+        .buy-subtitle {
+            margin: $m-1-5 auto 0;
+        }
 
-    .buy-numbers .prize-box h3 {
-        font-size: 1.4rem;
-    }
+        .buy-divider {
+            justify-content: center;
+            margin: $m-2 auto 0;
+        }
 
-    .buy-numbers .prize-box p {
-        font-size: 0.9rem;
-    }
+        .countdown {
+            justify-content: center;
+        }
 
-    .buy-numbers .prize-box .prize-img {
-        max-width: 50%; // imagen más grande en tablets
+        .buy-btn {
+            display: flex;
+            max-width: 350px;
+            margin: $m-2-5 auto 0;
+        }
+
+        .prize-card {
+            margin: 0 auto;
+        }
     }
 }
+
+
+// =============================================================
+// MOBILE
+// =============================================================
 
 @media (max-width: 768px) {
-    .buy-numbers {
-        padding: 3rem 1rem; // menos padding en móviles
-    }
+    #buyNumbersSection {
+        padding: $m-2-5 0;
 
-    .buy-numbers .section__title {
-        font-size: 1.8rem;
-        text-align: center;
-    }
+        .buy-header {
+            margin-bottom: $m-2;
+        }
 
-    .buy-numbers .section__subtitle {
-        font-size: 0.95rem;
-        text-align: center;
-    }
+        .buy-title {
+            font-size: clamp(2rem, 8vw, 2.5rem);
+        }
 
-    .buy-numbers .countdown {
-        flex-wrap: wrap;
-        gap: 1rem;
-    }
+        .buy-eyebrow {
+            font-size: 0.9rem;
+        }
 
-    .buy-numbers .countdown span {
-        font-size: 1.3rem;
-    }
+        .buy-subtitle {
+            font-size: 1.1rem;
+        }
 
-    .buy-numbers .prize-box h3 {
-        font-size: 1.2rem;
-    }
+        .countdown {
+            gap: $m-1;
+        }
 
-    .buy-numbers .prize-box p {
-        font-size: 0.85rem;
-    }
+        .countdown-item {
+            min-width: 60px;
+            padding: $m-0-5 $m-0-75;
+        }
 
-    .buy-numbers .prize-box .prize-img {
-        max-width: 70%; // imagen más grande en móviles
+        .countdown-number {
+            font-size: 2rem;
+        }
+
+        .countdown-label {
+            font-size: 0.7rem;
+        }
+
+        .prize-card {
+            padding: $m-1-5;
+            border-radius: 16px;
+        }
+
+        .prize-image-wrapper {
+            height: 200px;
+        }
     }
 }
 
+
+// =============================================================
+// MOBILE PEQUEÑO
+// =============================================================
+
 @media (max-width: 480px) {
-    .buy-numbers .section__title {
-        font-size: 1.5rem;
-    }
+    #buyNumbersSection {
+        padding: $m-2 0;
 
-    .buy-numbers .section__subtitle {
-        font-size: 0.85rem;
-    }
+        .buy-title {
+            font-size: clamp(1.8rem, 10vw, 2.2rem);
+        }
 
-    .buy-numbers .countdown span {
-        font-size: 1.1rem;
-    }
+        .buy-eyebrow {
+            font-size: 0.8rem;
+            letter-spacing: 0.25em;
+        }
 
-    .buy-numbers .prize-box h3 {
-        font-size: 1rem;
-    }
+        .buy-subtitle {
+            font-size: 1rem;
+        }
 
-    .buy-numbers .prize-box p {
-        font-size: 0.8rem;
-    }
+        .countdown {
+            flex-wrap: wrap;
+            gap: $m-0-75;
+        }
 
-    .buy-numbers .prize-box .prize-img {
-        max-width: 85%; // ocupa casi todo el ancho en móviles chicos
+        .countdown-item {
+            min-width: 55px;
+            padding: $m-0-5;
+        }
+
+        .countdown-number {
+            font-size: 1.5rem;
+        }
+
+        .countdown-label {
+            font-size: 0.65rem;
+        }
+
+        .prize-card {
+            padding: $m-1;
+            border-radius: 12px;
+        }
+
+        .prize-image-wrapper {
+            height: 150px;
+            border-radius: 10px;
+        }
+    }
+}
+
+
+// =============================================================
+// REDUCIR ANIMACIONES
+// =============================================================
+
+@media (prefers-reduced-motion: reduce) {
+    #buyNumbersSection {
+
+        .countdown-number,
+        .buy-btn,
+        .prize-card,
+        .prize-image {
+            animation: none;
+            transition: none;
+        }
     }
 }

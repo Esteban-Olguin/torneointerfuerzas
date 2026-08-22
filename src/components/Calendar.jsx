@@ -16,46 +16,43 @@ export default function Calendar() {
     }, []);
 
     return (
-        <section className="calendar section py-5 bg-dark text-light">
+        <section id="calendarSection" className="calendar-section">
             <div className="container">
-                <motion.h2
-                    className="fw-bold text-uppercase text-center mb-2 section__title sm"
-                    initial={{ opacity: 0, y: -50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    viewport={{ once: true }}
-                >
-                    Calendario de Partidos
-                </motion.h2>
-
-                <motion.h2
-                    className="text-center section__subtitle sm"
-                    initial={{ opacity: 0, y: -50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    viewport={{ once: true }}
-                >
-                    ¡No te pierdas de ningún partido!
-                </motion.h2>
-
-                <div className="row align-items-center">
-                    {/* Columna derecha: imagen de la copa (arriba en móviles, al costado en tablets/desktop) */}
-                    <div className="col-12 col-md-5 text-center order-1 order-md-2 mb-md-0">
-                        <motion.img
-                            src="/assets/logos/copa_chots-logo.png"
-                            alt="Copa Chots"
-                            className="img-fluid copa-img"
+                <div className="row justify-content-center">
+                    {/* Columna centrada */}
+                    <div className="col-lg-10">
+                        <motion.div
+                            className="calendar-header text-center"
                             initial={{ opacity: 0, y: -50 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8 }}
+                            transition={{ duration: 0.8, type: "spring" }}
                             viewport={{ once: true }}
-                        />
-                    </div>
+                        >
+                            <span className="calendar-eyebrow">Próximos partidos</span>
 
-                    {/* Columna izquierda: calendario */}
-                    <div className="col-12 col-md-7 order-2 order-md-1">
-                        <div className="table-responsive">
-                            <table className="table table-dark table-striped text-center">
+                            <h2 className="calendar-title">
+                                Calendario
+                            </h2>
+
+                            <p className="calendar-subtitle">
+                                ¡No te pierdas de ningún partido!
+                            </p>
+
+                            <div className="calendar-divider">
+                                <span />
+                                <span className="calendar-divider-star">✦</span>
+                                <span />
+                            </div>
+                        </motion.div>
+
+                        <motion.div
+                            className="table-responsive"
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.3, type: "spring" }}
+                            viewport={{ once: true }}
+                        >
+                            <table className="table calendar-table">
                                 <thead>
                                     <tr>
                                         <th>Fecha</th>
@@ -81,7 +78,7 @@ export default function Calendar() {
                                     ))}
                                 </tbody>
                             </table>
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
             </div>

@@ -58,48 +58,57 @@ export default function BuyNumbers() {
     }, [targetDate]);
 
     return (
-        <section className="buy-numbers section py-5 text-light">
+        <section id="buyNumbersSection" className="buy-numbers-section">
             <div className="container">
-                <div className="row align-items-stretch">
-                    {/* Columna izquierda: texto y contador */}
-                    <div className="col-12 col-lg-6 mb-4 mb-lg-0 d-flex">
+                <div className="row justify-content-center align-items-stretch">
+                    {/* Columna izquierda - Texto y contador */}
+                    <div className="col-lg-6 mb-4 mb-lg-0">
                         <motion.div
-                            className="promo-box p-4 rounded w-100"
+                            className="buy-header"
                             initial={{ opacity: 0, x: -50 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.8 }}
+                            transition={{ duration: 0.8, type: "spring" }}
                             viewport={{ once: true }}
                         >
-                            <h2 className="fw-bold text-uppercase mb-3 section__title">
+                            <span className="buy-eyebrow">Participá ahora</span>
+
+                            <h2 className="buy-title">
                                 Compra de Números
                             </h2>
-                            <p className="section__subtitle mb-4">
+
+                            <p className="buy-subtitle">
                                 ¡Participá del Sorteo y gana increíbles premios!
                             </p>
 
+                            <div className="buy-divider">
+                                <span />
+                                <span className="buy-divider-star">✦</span>
+                                <span />
+                            </div>
+
                             {/* Contador regresivo */}
-                            <div className="countdown d-flex justify-content-around mb-4">
-                                <div>
-                                    <span>{timeLeft.days}</span>
-                                    <small>Días</small>
+                            <div className="countdown">
+                                <div className="countdown-item">
+                                    <span className="countdown-number">{timeLeft.days}</span>
+                                    <span className="countdown-label">Días</span>
                                 </div>
-                                <div>
-                                    <span>{timeLeft.hours}</span>
-                                    <small>Horas</small>
+                                <div className="countdown-item">
+                                    <span className="countdown-number">{timeLeft.hours}</span>
+                                    <span className="countdown-label">Horas</span>
                                 </div>
-                                <div>
-                                    <span>{timeLeft.minutes}</span>
-                                    <small>Minutos</small>
+                                <div className="countdown-item">
+                                    <span className="countdown-number">{timeLeft.minutes}</span>
+                                    <span className="countdown-label">Minutos</span>
                                 </div>
-                                <div>
-                                    <span>{timeLeft.seconds}</span>
-                                    <small>Segundos</small>
+                                <div className="countdown-item">
+                                    <span className="countdown-number">{timeLeft.seconds}</span>
+                                    <span className="countdown-label">Segundos</span>
                                 </div>
                             </div>
 
                             <motion.a
                                 href="#"
-                                className="btn btn-warning fw-bold px-4 py-2"
+                                className="buy-btn"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                             >
@@ -108,22 +117,33 @@ export default function BuyNumbers() {
                         </motion.div>
                     </div>
 
-                    {/* Columna derecha: premio */}
-                    <div className="col-12 col-lg-6 d-flex align-items-center justify-content-center">
+                    {/* Columna derecha - Premio */}
+                    <div className="col-lg-6 d-flex align-items-center justify-content-center">
                         <motion.div
+                            className="prize-card"
                             initial={{ opacity: 0, x: 50 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.8 }}
+                            transition={{ duration: 0.8, delay: 0.3, type: "spring" }}
                             viewport={{ once: true }}
-                            className="prize-box p-4 rounded w-100 text-center"
                         >
-                            <h3 className="fw-bold mb-3">Premio en Juego</h3>
-                            <img
-                                src={prizeImage}
-                                alt={prize}
-                                className="img-fluid prize-img mx-auto d-block"
-                            />
-                            <p className="text-light">{prize}</p>
+                            <span className="prize-eyebrow">Premio en juego</span>
+
+                            <h3 className="prize-title">
+                                {prize || "Gran Premio"}
+                            </h3>
+
+                            {prizeImage && (
+                                <div className="prize-image-wrapper">
+                                    <img
+                                        src={prizeImage}
+                                        alt={prize}
+                                        className="prize-image"
+                                    />
+                                    <div className="prize-image-overlay" />
+                                </div>
+                            )}
+
+                            <div className="prize-accent" />
                         </motion.div>
                     </div>
                 </div>
