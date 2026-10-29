@@ -1,0 +1,266 @@
+.buy-page-section {
+    min-height: 100vh;
+    padding: 8rem 0 $m-3;
+    background: #0d0a1a;
+
+    .buy-page-header {
+        max-width: 600px;
+        margin: 0 auto $m-2-5;
+    }
+
+    .buy-page-eyebrow {
+        display: inline-block;
+        margin-bottom: $m-0-75;
+        color: #a78bfa;
+        font-family: $body-font;
+        font-size: 0.9rem;
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+    }
+
+    .buy-page-title {
+        color: #f5f5f5;
+        font-family: $body-font;
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+        text-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+    }
+
+    .buy-page-subtitle {
+        color: #c4b8d9;
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    .buy-page-form-wrapper {
+        max-width: 700px;
+        margin: 0 auto;
+        padding: $m-2;
+        background: rgba(27, 21, 48, 0.8);
+        border: 1px solid rgba(139, 92, 246, 0.15);
+        border-radius: 20px;
+        backdrop-filter: blur(8px);
+    }
+
+    // =====================================================
+    // LABELS - Corregido color blanco
+    // =====================================================
+    .form-label {
+        color: #f5f5f5; // Cambiado de #a78bfa a blanco para mejor visibilidad
+        font-family: $body-font;
+        font-size: 0.85rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: $m-0-5;
+        display: block;
+    }
+
+    // =====================================================
+    // FORM CONTROLS - Corregido fondo y texto
+    // =====================================================
+    .form-control {
+        width: 100%;
+        padding: $m-0-75 $m-1;
+        background: rgba(139, 92, 246, 0.08);
+        border: 1px solid rgba(139, 92, 246, 0.15);
+        border-radius: 10px;
+        color: #f5f5f5; // Texto blanco
+        font-size: 1rem;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+        // Placeholder
+        &::placeholder {
+            color: rgba(255, 255, 255, 0.5); // Placeholder visible
+        }
+
+        // Focus
+        &:focus {
+            border-color: #8b5cf6;
+            background: rgba(139, 92, 246, 0.12);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+            outline: none;
+            color: #ffffff; // Texto blanco brillante al focus
+        }
+
+        // Disabled
+        &:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+    }
+
+    // =====================================================
+    // SELECT - Corregido para lista desplegable
+    // =====================================================
+    select.form-control {
+        cursor: pointer; // Mouse pointer al hacer hover
+        appearance: none; // Eliminar estilo nativo
+        -webkit-appearance: none;
+        -moz-appearance: none;
+
+        // Fondo oscuro para las opciones
+        background-color: #1b1530;
+        color: #f5f5f5;
+
+        // Icono de flecha personalizado
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a78bfa' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 1rem center;
+        padding-right: 2.5rem;
+
+        // Hover
+        &:hover {
+            border-color: rgba(139, 92, 246, 0.4);
+            background-color: #241d3d;
+            cursor: pointer;
+        }
+
+        // Opciones
+        option {
+            background-color: #1b1530; // Fondo oscuro para opciones
+            color: #f5f5f5; // Texto blanco
+            padding: $m-0-5 $m-1;
+        }
+    }
+
+    // =====================================================
+    // INPUTS de texto y email
+    // =====================================================
+    input[type="text"].form-control,
+    input[type="email"].form-control,
+    input[type="tel"].form-control {
+        background: rgba(139, 92, 246, 0.08);
+        color: #f5f5f5;
+
+        &::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        &:focus {
+            background: rgba(139, 92, 246, 0.12);
+            color: #ffffff;
+        }
+    }
+
+    // =====================================================
+    // AUTOCOMPLETE - Corregir estilos del navegador
+    // =====================================================
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    select:-webkit-autofill,
+    select:-webkit-autofill:hover,
+    select:-webkit-autofill:focus {
+        -webkit-text-fill-color: #f5f5f5;
+        -webkit-box-shadow: 0 0 0px 1000px #1b1530 inset;
+        transition: background-color 5000s ease-in-out 0s;
+    }
+
+    .purchase-summary {
+        padding: $m-1-5;
+        background: rgba(139, 92, 246, 0.1);
+        border: 1px solid rgba(139, 92, 246, 0.3);
+        border-radius: 12px;
+
+        h3 {
+            color: #a78bfa;
+            font-family: $body-font;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+        }
+
+        p {
+            color: #c4b8d9;
+            margin: $m-0-5 0;
+        }
+    }
+
+    .buy-page-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: $m-1 $m-2-5;
+        background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+        color: #fff;
+        font-family: $body-font;
+        font-size: 1.1rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow: 0 0 25px rgba(139, 92, 246, 0.5);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        &:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 40px rgba(139, 92, 246, 0.7);
+        }
+
+        &:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+    }
+}
+
+.purchase-success-section {
+    min-height: 100vh;
+    padding: 8rem 0;
+    background: #0d0a1a;
+
+    .purchase-success-card {
+        padding: $m-2-5;
+        background: rgba(27, 21, 48, 0.8);
+        border: 1px solid rgba(139, 92, 246, 0.15);
+        border-radius: 20px;
+
+        .success-icon {
+            font-size: 4rem;
+            color: #10b981;
+        }
+
+        h2 {
+            color: #f5f5f5;
+            font-family: $body-font;
+            text-transform: uppercase;
+        }
+
+        p {
+            color: #c4b8d9;
+        }
+
+        .assigned-numbers {
+            margin-top: $m-2;
+
+            h3 {
+                color: #a78bfa;
+                font-family: $body-font;
+                font-size: 1.1rem;
+                text-transform: uppercase;
+            }
+        }
+
+        .numbers-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: $m-0-75;
+            justify-content: center;
+            margin-top: $m-1;
+        }
+
+        .number-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: $m-0-75 $m-1;
+            background: rgba(139, 92, 246, 0.15);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 8px;
+            color: #a78bfa;
+            font-family: $body-font;
+            font-size: 1.2rem;
+        }
+    }
+}

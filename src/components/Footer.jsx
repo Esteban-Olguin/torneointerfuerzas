@@ -23,7 +23,7 @@ export default function Footer() {
                     <div className="col-lg-4">
                         <div className="footer-social">
                             <a
-                                href="https://instagram.com/tuCuenta"
+                                href="https://www.instagram.com/torneopolicialf5?utm_source=qr&igsh=NjBtbGVjNjlrOWYy"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="footer-social-link"
@@ -32,7 +32,7 @@ export default function Footer() {
                                 <i className="fab fa-instagram"></i>
                             </a>
                             <a
-                                href="https://tiktok.com/@tuCuenta"
+                                href="https://www.tiktok.com/@torneointerfuerzas?_r=1&_t=ZS-98dgJw2oxfg"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="footer-social-link"
@@ -41,7 +41,7 @@ export default function Footer() {
                                 <i className="fab fa-tiktok"></i>
                             </a>
                             <a
-                                href="https://youtube.com/@tuCuenta"
+                                href="https://youtube.com/@diegobenitez8266?si=XRMXC60QlIOvTZlx"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="footer-social-link"

@@ -1,5 +1,13 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { db } from "../services/firebaseConfig";
+import emailjs from '@emailjs/browser';
+
+// Configuración de EmailJS
+const EMAILJS_SERVICE_ID = "service_pvfn4i8";
+const EMAILJS_TEMPLATE_ID = "template_b0x82at";
+const EMAILJS_PUBLIC_KEY = "P0uJsMxyKSmQcJUNR";
 
 export default function ContactForm() {
     const [formData, setFormData] = useState({
@@ -24,12 +32,37 @@ export default function ContactForm() {
         setSubmitStatus(null);
 
         try {
-            // Simulación de envío (reemplazar con tu lógica real)
-            await new Promise(resolve => setTimeout(resolve, 1500));
+            // 1. Guardar en Firestore
+            const firestorePromise = addDoc(collection(db, "contactMessages"), {
+                name: formData.name.trim(),
+                email: formData.email.trim(),
+                message: formData.message.trim(),
+                createdAt: serverTimestamp(),
+                read: false,
+            });
 
-            console.log("Formulario enviado:", formData);
+            // 2. Enviar email con EmailJS
+            const emailPromise = emailjs.send(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID,
+                {
+                    from_name: formData.name,
+                    from_email: formData.email,
+                    message: formData.message,
+                },
+                EMAILJS_PUBLIC_KEY
+            );
+
+            // Ejecutar ambas promesas en paralelo
+            await Promise.all([firestorePromise, emailPromise]);
+
             setSubmitStatus("success");
             setFormData({ name: "", email: "", message: "" });
+
+            // Resetear el estado después de 5 segundos
+            setTimeout(() => {
+                setSubmitStatus(null);
+            }, 5000);
         } catch (error) {
             console.error("Error al enviar el formulario:", error);
             setSubmitStatus("error");
@@ -96,6 +129,8 @@ export default function ContactForm() {
                                                 className="form-control"
                                                 placeholder="Tu nombre"
                                                 required
+                                                minLength="2"
+                                                maxLength="100"
                                                 disabled={isSubmitting}
                                             />
                                         </div>
@@ -136,6 +171,8 @@ export default function ContactForm() {
                                                 placeholder="Escribí tu mensaje acá..."
                                                 rows="5"
                                                 required
+                                                minLength="10"
+                                                maxLength="5000"
                                                 disabled={isSubmitting}
                                             />
                                         </div>
@@ -152,7 +189,11 @@ export default function ContactForm() {
                                         >
                                             {isSubmitting ? (
                                                 <>
-                                                    <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true" />
+                                                    <span
+                                                        className="spinner-border spinner-border-sm me-2"
+                                                        role="status"
+                                                        aria-hidden="true"
+                                                    />
                                                     Enviando...
                                                 </>
                                             ) : (
@@ -170,7 +211,9 @@ export default function ContactForm() {
                                                 animate={{ opacity: 1, y: 0 }}
                                                 role="alert"
                                             >
-                                                <span className="contact-alert-icon" aria-hidden="true">✓</span>
+                                                <span className="contact-alert-icon" aria-hidden="true">
+                                                    <i className="fas fa-check"></i>
+                                                </span>
                                                 <div>
                                                     <strong>¡Mensaje enviado!</strong>
                                                     <p>Te responderemos a la brevedad.</p>
@@ -187,7 +230,9 @@ export default function ContactForm() {
                                                 animate={{ opacity: 1, y: 0 }}
                                                 role="alert"
                                             >
-                                                <span className="contact-alert-icon" aria-hidden="true">!</span>
+                                                <span className="contact-alert-icon" aria-hidden="true">
+                                                    <i className="fas fa-exclamation"></i>
+                                                </span>
                                                 <div>
                                                     <strong>Error al enviar</strong>
                                                     <p>Intentá nuevamente más tarde.</p>

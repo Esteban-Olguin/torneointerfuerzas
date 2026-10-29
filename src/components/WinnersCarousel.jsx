@@ -90,6 +90,11 @@ export default function WinnersCarousel() {
         fetchWinners();
     }, []);
 
+    // Duplicar ganadores para efecto infinito
+    const duplicatedWinners = winners.length > 0
+        ? [...winners, ...winners, ...winners]
+        : [];
+
     // Determinar el estado actual
     const currentState = loading
         ? "loading"
@@ -108,7 +113,7 @@ export default function WinnersCarousel() {
             <div className="container">
                 <div className="row justify-content-center">
                     {/* Columna centrada */}
-                    <div className="col-lg-10">
+                    <div className="col-12">
                         {/* Header centrado */}
                         <WinnersHeader
                             subtitle={
@@ -123,27 +128,21 @@ export default function WinnersCarousel() {
                             <WinnersState type={currentState} />
                         ) : (
                             <>
-                                <div
-                                    id="winnersCarousel"
-                                    className="carousel slide winners-carousel"
-                                    data-bs-ride="carousel"
-                                    data-bs-interval="5000"
-                                    data-bs-touch="true"
-                                >
-                                    {/* Slides */}
-                                    <div className="carousel-inner">
-                                        {winners.map((winner, index) => (
+                                {/* Carrusel marquee */}
+                                <div className="winners-marquee">
+                                    <div className="winners-marquee-track">
+                                        {duplicatedWinners.map((winner, index) => (
                                             <div
-                                                key={winner.id}
-                                                className={`carousel-item ${index === 0 ? "active" : ""}`}
+                                                key={`${winner.id}-${index}`}
+                                                className="winners-marquee-item"
                                             >
                                                 <article className="winner-card">
                                                     {/* Número de ganador */}
                                                     <div
                                                         className="winner-number"
-                                                        aria-label={`Ganador número ${index + 1}`}
+                                                        aria-label={`Ganador número ${(index % winners.length) + 1}`}
                                                     >
-                                                        {String(index + 1).padStart(2, "0")}
+                                                        {String((index % winners.length) + 1).padStart(2, "0")}
                                                     </div>
 
                                                     {/* Imagen */}
@@ -152,7 +151,7 @@ export default function WinnersCarousel() {
                                                             src={winner.imageUrl}
                                                             alt={`Ganador: ${winner.name}`}
                                                             className="winner-image"
-                                                            loading={index === 0 ? "eager" : "lazy"}
+                                                            loading="lazy"
                                                             decoding="async"
                                                         />
                                                         <div
@@ -184,58 +183,6 @@ export default function WinnersCarousel() {
                                             </div>
                                         ))}
                                     </div>
-
-                                    {/* Controles de navegación */}
-                                    {winners.length > 1 && (
-                                        <>
-                                            <button
-                                                className="carousel-control-prev winners-control"
-                                                type="button"
-                                                data-bs-target="#winnersCarousel"
-                                                data-bs-slide="prev"
-                                                aria-label="Ganador anterior"
-                                            >
-                                                <span
-                                                    className="winners-control-icon"
-                                                    aria-hidden="true"
-                                                >
-                                                    ‹
-                                                </span>
-                                            </button>
-
-                                            <button
-                                                className="carousel-control-next winners-control"
-                                                type="button"
-                                                data-bs-target="#winnersCarousel"
-                                                data-bs-slide="next"
-                                                aria-label="Siguiente ganador"
-                                            >
-                                                <span
-                                                    className="winners-control-icon"
-                                                    aria-hidden="true"
-                                                >
-                                                    ›
-                                                </span>
-                                            </button>
-                                        </>
-                                    )}
-
-                                    {/* Indicadores */}
-                                    {winners.length > 1 && (
-                                        <div className="carousel-indicators winners-indicators">
-                                            {winners.map((winner, index) => (
-                                                <button
-                                                    key={winner.id}
-                                                    type="button"
-                                                    data-bs-target="#winnersCarousel"
-                                                    data-bs-slide-to={index}
-                                                    className={index === 0 ? "active" : ""}
-                                                    aria-current={index === 0 ? "true" : undefined}
-                                                    aria-label={`Mostrar ganador ${index + 1}`}
-                                                />
-                                            ))}
-                                        </div>
-                                    )}
                                 </div>
 
                                 {/* Contador de ganadores */}

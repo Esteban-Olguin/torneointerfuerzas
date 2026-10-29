@@ -5,7 +5,7 @@ export default function Hero() {
     return (
         <section id="heroSection" className="hero-section">
             <div className="container">
-                <div className="row justify-content-center align-items-center min-vh-100">
+                <div className="row justify-content-center align-items-center">
                     {/* Columna centrada */}
                     <div className="col-lg-10">
                         <div className="hero-header text-center">

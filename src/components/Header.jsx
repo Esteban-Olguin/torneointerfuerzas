@@ -1,16 +1,30 @@
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
-import Collapse from "bootstrap/js/dist/collapse";
+import { useEffect } from "react";
 
-export default function Navbar() {
+export default function Header() {
     const navigate = useNavigate();
     const location = useLocation();
 
+    // Función para cerrar el menú
     const closeMenu = () => {
         const navbarCollapse = document.getElementById("navbarNav");
-        if (navbarCollapse?.classList.contains("show")) {
-            Collapse.getOrCreateInstance(navbarCollapse).hide();
+        if (navbarCollapse) {
+            // Remover la clase show
+            navbarCollapse.classList.remove("show");
+
+            // Actualizar el botón hamburguesa
+            const toggler = document.querySelector(".navbar-toggler");
+            if (toggler) {
+                toggler.setAttribute("aria-expanded", "false");
+                toggler.classList.add("collapsed");
+            }
         }
     };
+
+    // Cerrar menú cuando cambia la ruta
+    useEffect(() => {
+        closeMenu();
+    }, [location.pathname]);
 
     // Función para navegar a secciones
     const scrollToSection = (sectionId) => {
@@ -23,13 +37,15 @@ export default function Navbar() {
         }
 
         // Si estamos en la página principal, hacer scroll suave
-        const section = document.getElementById(sectionId);
-        if (section) {
-            section.scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-            });
-        }
+        setTimeout(() => {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                });
+            }
+        }, 300); // Aumentado el delay para asegurar que el menú se cierre
     };
 
     return (
@@ -82,22 +98,6 @@ export default function Navbar() {
                             <li className="nav-item">
                                 <button
                                     className="nav-link"
-                                    onClick={() => scrollToSection("pastWinnersCarousel")}
-                                >
-                                    Ganadores
-                                </button>
-                            </li>
-                            <li className="nav-item">
-                                <button
-                                    className="nav-link"
-                                    onClick={() => scrollToSection("calendarSection")}
-                                >
-                                    Calendario
-                                </button>
-                            </li>
-                            <li className="nav-item">
-                                <button
-                                    className="nav-link"
                                     onClick={() => scrollToSection("buyNumbersSection")}
                                 >
                                     Comprar Números
@@ -106,9 +106,9 @@ export default function Navbar() {
                             <li className="nav-item">
                                 <button
                                     className="nav-link"
-                                    onClick={() => scrollToSection("sponsorsSection")}
+                                    onClick={() => scrollToSection("calendarSection")}
                                 >
-                                    Sponsors
+                                    Calendario
                                 </button>
                             </li>
                             <li className="nav-item">
@@ -124,7 +124,7 @@ export default function Navbar() {
                         {/* Redes sociales */}
                         <div className="header-social">
                             <a
-                                href="https://instagram.com/tuCuenta"
+                                href="https://www.instagram.com/torneopolicialf5?utm_source=qr&igsh=NjBtbGVjNjlrOWYy"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="social-link"
@@ -133,7 +133,7 @@ export default function Navbar() {
                                 <i className="fab fa-instagram"></i>
                             </a>
                             <a
-                                href="https://tiktok.com/@tuCuenta"
+                                href="https://www.tiktok.com/@torneointerfuerzas?_r=1&_t=ZS-98dgJw2oxfg"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="social-link"
@@ -142,7 +142,7 @@ export default function Navbar() {
                                 <i className="fab fa-tiktok"></i>
                             </a>
                             <a
-                                href="https://youtube.com/@tuCuenta"
+                                href="https://youtube.com/@diegobenitez8266?si=XRMXC60QlIOvTZlx"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="social-link"

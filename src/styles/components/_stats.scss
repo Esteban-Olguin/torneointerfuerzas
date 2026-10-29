@@ -1,0 +1,205 @@
+#statsSection {
+    --stats-bg: #0d0a1a;
+    --stats-card: #1b1530;
+    --stats-text: #f5f5f5;
+    --stats-muted: #c4b8d9;
+    --stats-accent: #8b5cf6;
+    --stats-accent-light: #a78bfa;
+    --stats-border: rgba(139, 92, 246, 0.15);
+
+    position: relative;
+    overflow: hidden;
+
+    padding: $m-2-5 0;
+
+    background:
+        radial-gradient(circle at 50% 50%,
+            rgba(139, 92, 246, 0.08),
+            transparent 50%),
+        var(--stats-bg);
+
+
+    // =====================================================
+    // CARD DE ESTADÍSTICA
+    // =====================================================
+
+    .stat-card {
+        position: relative;
+        text-align: center;
+        padding: $m-2 $m-1-5;
+        background: rgba(27, 21, 48, 0.8);
+        border: 1px solid var(--stats-border);
+        border-radius: 16px;
+        backdrop-filter: blur(8px);
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease,
+            border-color 0.3s ease;
+
+        &:hover {
+            transform: translateY(-5px);
+            border-color: rgba(139, 92, 246, 0.4);
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.3),
+                0 0 25px rgba(139, 92, 246, 0.2);
+        }
+    }
+
+    .stat-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        margin: 0 auto $m-1;
+        font-size: 1.3rem;
+        color: var(--stats-accent-light);
+        background: rgba(139, 92, 246, 0.1);
+        border: 1px solid rgba(139, 92, 246, 0.3);
+        border-radius: 50%;
+        animation: iconFloat 3s ease-in-out infinite;
+        transition:
+            color 0.3s ease,
+            background 0.3s ease,
+            border-color 0.3s ease,
+            box-shadow 0.3s ease;
+
+        i {
+            transition: transform 0.3s ease;
+        }
+    }
+
+    .stat-card:hover {
+        .stat-icon {
+            color: #fff;
+            background: rgba(139, 92, 246, 0.2);
+            border-color: var(--stats-accent);
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+
+            i {
+                transform: scale(1.15) rotate(5deg);
+            }
+        }
+    }
+
+    .stat-number {
+        display: block;
+        color: var(--stats-accent-light);
+        font-family: $body-font;
+        font-size: clamp(2rem, 4vw, 2.5rem);
+        line-height: 1;
+        letter-spacing: 0.02em;
+        text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+    }
+
+    .stat-label {
+        margin: $m-0-5 0 0;
+        color: var(--stats-muted);
+        font-size: $small-font-size;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+}
+
+
+// =====================================================
+// ANIMACIONES
+// =====================================================
+
+@keyframes iconFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+
+// =============================================================
+// TABLET
+// =============================================================
+
+@media (max-width: 992px) {
+    #statsSection {
+        .stat-card {
+            padding: $m-1-5 $m-1;
+        }
+    }
+}
+
+
+// =============================================================
+// MOBILE
+// =============================================================
+
+@media (max-width: 768px) {
+    #statsSection {
+        padding: $m-2 0;
+
+        .stat-icon {
+            width: 40px;
+            height: 40px;
+            font-size: 1rem;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+        }
+    }
+}
+
+
+// =============================================================
+// MOBILE PEQUEÑO
+// =============================================================
+
+@media (max-width: 480px) {
+    #statsSection {
+        padding: $m-1-5 0;
+
+        .stat-card {
+            padding: $m-1 $m-0-75;
+            border-radius: 12px;
+        }
+
+        .stat-icon {
+            width: 35px;
+            height: 35px;
+            font-size: 0.85rem;
+            margin-bottom: $m-0-75;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.65rem;
+        }
+    }
+}
+
+
+// =============================================================
+// REDUCIR ANIMACIONES
+// =============================================================
+
+@media (prefers-reduced-motion: reduce) {
+    #statsSection {
+
+        .stat-card,
+        .stat-icon,
+        .stat-icon i {
+            animation: none;
+            transition: none;
+        }
+    }
+}

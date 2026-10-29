@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../services/firebaseConfig";
+import { useNavigate } from "react-router-dom";
 
 export default function BuyNumbers() {
+    const navigate = useNavigate();
     const [targetDate, setTargetDate] = useState(null);
     const [timeLeft, setTimeLeft] = useState({
         days: 0,
@@ -106,14 +108,14 @@ export default function BuyNumbers() {
                                 </div>
                             </div>
 
-                            <motion.a
-                                href="#"
+                            <motion.button
                                 className="buy-btn"
+                                onClick={() => navigate("/comprar")}
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                             >
                                 Comprar Ahora
-                            </motion.a>
+                            </motion.button>
                         </motion.div>
                     </div>
 

@@ -19,7 +19,6 @@
             transparent 45%),
         var(--winners-bg);
 
-
     // =====================================================
     // HEADER - Centrado
     // =====================================================
@@ -80,41 +79,71 @@
         text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
     }
 
-
     // =====================================================
-    // CAROUSEL - Centrado
+    // MARQUEE INFINITO
     // =====================================================
 
-    .winners-carousel {
+    .winners-marquee {
         position: relative;
-        max-width: 350px;
-        margin: 0 auto;
-        padding-bottom: $m-2-5;
+        width: 100%;
         overflow: hidden;
+        padding: $m-1-5 0;
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 120px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        &::before {
+            left: 0;
+            background: linear-gradient(to right, var(--winners-bg), transparent);
+        }
+
+        &::after {
+            right: 0;
+            background: linear-gradient(to left, var(--winners-bg), transparent);
+        }
     }
 
-    .carousel-inner {
-        overflow: hidden;
-        border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    .winners-marquee-track {
+        display: flex;
+        gap: $m-2;
+        width: max-content;
+        animation: marqueeScroll 30s linear infinite;
+        padding: $m-0-5;
+
+        &:hover {
+            animation-play-state: paused;
+        }
     }
 
-    .carousel-item {
-        padding: 0;
-        transition: transform 0.6s ease-in-out;
+    .winners-marquee-item {
+        flex: 0 0 auto;
+        width: 280px; // Más ancho para menos vertical
     }
-
 
     // =====================================================
-    // CARD - Pequeña y rectangular vertical
+    // CARD - Menos rectangular vertical
     // =====================================================
 
     .winner-card {
         position: relative;
         display: flex;
         flex-direction: column;
-
         width: 100%;
+
+        /*
+         * Dimensiones para card vertical equilibrada
+         * Ancho: 280px
+         * Alto: 380px
+         * Proporción: 1:1.35 (vertical pero no exagerada)
+         */
         min-height: 380px;
         max-height: 380px;
 
@@ -123,22 +152,17 @@
                 var(--winners-card-light),
                 var(--winners-card));
         border: 1px solid var(--winners-border);
-        border-radius: 12px;
+        border-radius: 16px;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
 
         &:hover {
-            transform: translateY(-2px);
+            transform: translateY(-5px);
             box-shadow:
                 0 15px 35px rgba(0, 0, 0, 0.4),
-                0 0 20px rgba(139, 92, 246, 0.2);
+                0 0 25px rgba(139, 92, 246, 0.2);
         }
     }
-
-
-    // =====================================================
-    // NUMERO
-    // =====================================================
 
     .winner-number {
         position: absolute;
@@ -148,28 +172,34 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 30px;
-        height: 30px;
+        width: 32px;
+        height: 32px;
         border: 1px solid rgba(255, 255, 255, 0.18);
         border-radius: 50%;
         background: rgba(0, 0, 0, 0.45);
         backdrop-filter: blur(8px);
         color: rgba(255, 255, 255, 0.9);
         font-family: $body-font;
-        font-size: 0.6rem;
+        font-size: 0.65rem;
         letter-spacing: 0.05em;
     }
 
-
     // =====================================================
-    // IMAGEN - Pequeña pero de calidad
+    // IMAGEN - Optimizada para calidad
     // =====================================================
 
     .winner-image-wrapper {
         position: relative;
         width: 100%;
+
+        /*
+         * Altura de imagen: 260px
+         * Ancho de card: 280px
+         * Proporción: ~1:0.93 (casi cuadrada)
+         */
         height: 260px;
         min-height: 260px;
+
         overflow: hidden;
         background: #1a1a1a;
     }
@@ -178,12 +208,14 @@
         display: block;
         width: 100%;
         height: 100%;
-        min-height: 0;
+        min-height: 100%;
 
         object-fit: cover;
         object-position: center 20%;
+
         image-rendering: -webkit-optimize-contrast;
         image-rendering: crisp-edges;
+
         transform: translateZ(0);
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
@@ -194,11 +226,9 @@
         transition: transform 0.6s ease, filter 0.3s ease;
     }
 
-    .winner-card:hover {
-        .winner-image {
-            transform: scale(1.03);
-            filter: brightness(1.05);
-        }
+    .winner-card:hover .winner-image {
+        transform: scale(1.05);
+        filter: brightness(1.05);
     }
 
     .winner-image-overlay {
@@ -207,17 +237,12 @@
         background:
             linear-gradient(0deg,
                 rgba(27, 27, 27, 0.85) 0%,
-                transparent 35%),
+                transparent 40%),
             linear-gradient(180deg,
-                rgba(0, 0, 0, 0.15),
-                transparent 25%);
+                rgba(0, 0, 0, 0.1),
+                transparent 20%);
         pointer-events: none;
     }
-
-
-    // =====================================================
-    // TROFEO
-    // =====================================================
 
     .winner-trophy {
         position: absolute;
@@ -226,8 +251,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 30px;
-        height: 30px;
+        width: 32px;
+        height: 32px;
         border: 1px solid rgba(255, 255, 255, 0.18);
         border-radius: 50%;
         background: rgba(0, 0, 0, 0.45);
@@ -235,14 +260,13 @@
 
         span {
             color: var(--winners-accent-light);
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             animation: trophyGlow 2s ease-in-out infinite;
         }
     }
 
-
     // =====================================================
-    // INFORMACION DEL GANADOR
+    // INFORMACIÓN
     // =====================================================
 
     .winner-info {
@@ -250,8 +274,8 @@
         flex-direction: column;
         justify-content: center;
         flex: 1;
-        padding: $m-1;
-        text-align: center; // Centrado
+        padding: $m-0-75 $m-1;
+        text-align: center;
     }
 
     .winner-label {
@@ -268,112 +292,27 @@
         margin: 0;
         color: var(--winners-text);
         font-family: $body-font;
-        font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+        font-size: 1.1rem;
         line-height: 1.1;
         text-transform: uppercase;
         letter-spacing: 0.02em;
     }
 
     .winner-accent {
-        width: 35px;
+        width: 40px;
         height: 2px;
-        margin: $m-0-5 auto 0; // Centrado
+        margin: $m-0-5 auto 0;
         border-radius: 10px;
         background: var(--winners-accent);
         box-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
     }
-
-
-    // =====================================================
-    // CONTROLES - Pequeños y ajustados
-    // =====================================================
-
-    .winners-control {
-        position: absolute;
-        top: 50%;
-        width: 34px;
-        height: 34px;
-        margin-top: -17px;
-        opacity: 0.7;
-        z-index: $z-tooltip;
-        background: transparent;
-        border: none;
-        transition: opacity 0.3s ease;
-
-        &:hover {
-            opacity: 1;
-        }
-    }
-
-    .carousel-control-prev {
-        left: $m-0-5;
-    }
-
-    .carousel-control-next {
-        right: $m-0-5;
-    }
-
-    .winners-control-icon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 32px;
-        height: 32px;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        border-radius: 50%;
-        background: rgba(20, 20, 20, 0.9);
-        color: #fff;
-        font-size: 1.1rem;
-        line-height: 1;
-        transition: background 0.25s ease, transform 0.25s ease;
-
-        &:hover {
-            background: var(--winners-accent);
-            transform: scale(1.05);
-        }
-    }
-
-
-    // =====================================================
-    // INDICADORES
-    // =====================================================
-
-    .winners-indicators {
-        position: absolute;
-        bottom: -$m-1-5;
-        left: 50%;
-        display: flex;
-        width: auto;
-        margin: 0;
-        gap: 0.35rem;
-        transform: translateX(-50%);
-
-        [data-bs-target] {
-            width: 6px;
-            height: 6px;
-            margin: 0;
-            border: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            opacity: 1;
-            transition: width 0.3s ease, background 0.3s ease;
-
-            &.active {
-                width: 20px;
-                border-radius: 10px;
-                background: var(--winners-accent);
-                box-shadow: 0 0 8px rgba(139, 92, 246, 0.4);
-            }
-        }
-    }
-
 
     // =====================================================
     // CONTADOR
     // =====================================================
 
     .winners-count {
-        margin-top: $m-1-5;
+        margin-top: $m-2;
         text-align: center;
         color: rgba(255, 255, 255, 0.4);
         font-family: $body-font;
@@ -386,9 +325,8 @@
         }
     }
 
-
     // =====================================================
-    // LOADING
+    // LOADING / ERROR / VACIO
     // =====================================================
 
     .winners-loading {
@@ -406,23 +344,7 @@
             height: 2rem;
             color: var(--winners-accent);
         }
-
-        span {
-            font-family: $body-font;
-            font-size: 0.9rem;
-            letter-spacing: 0.1em;
-        }
-
-        small {
-            font-size: 0.8rem;
-            color: var(--winners-muted);
-        }
     }
-
-
-    // =====================================================
-    // ERROR / VACIO
-    // =====================================================
 
     .winners-message {
         max-width: 400px;
@@ -465,10 +387,19 @@
     }
 }
 
-
 // =====================================================
 // ANIMACIONES
 // =====================================================
+
+@keyframes marqueeScroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-280px * 3 - $m-2 * 3));
+    }
+}
 
 @keyframes trophyGlow {
 
@@ -494,24 +425,18 @@
     }
 }
 
-
 // =============================================================
-// TABLET
+// MEDIA QUERIES
 // =============================================================
 
 @media (max-width: 992px) {
     #pastWinnersCarousel {
-        .winners-header {
-            max-width: 100%;
-            margin-bottom: $m-2;
+        .winners-marquee-track {
+            gap: $m-1-5;
         }
 
-        .winners-title {
-            font-size: clamp(2.5rem, 6vw, 3.5rem);
-        }
-
-        .winners-carousel {
-            max-width: 320px;
+        .winners-marquee-item {
+            width: 260px;
         }
 
         .winner-card {
@@ -526,155 +451,59 @@
     }
 }
 
-
-// =============================================================
-// MOBILE
-// =============================================================
-
 @media (max-width: 768px) {
     #pastWinnersCarousel {
         padding: $m-2-5 0;
 
-        .winners-header {
-            margin-bottom: $m-1-5;
+        .winners-marquee-track {
+            gap: $m-1;
         }
 
-        .winners-title {
-            font-size: clamp(2.2rem, 8vw, 3rem);
-        }
-
-        .winners-carousel {
-            max-width: 300px;
-            padding-bottom: $m-2;
+        .winners-marquee-item {
+            width: 240px;
         }
 
         .winner-card {
             min-height: 340px;
             max-height: 340px;
-            border-radius: 10px;
         }
 
         .winner-image-wrapper {
             height: 220px;
             min-height: 220px;
         }
-
-        .winner-image {
-            object-position: center 25%;
-        }
-
-        .winner-info {
-            min-height: 90px;
-            padding: $m-0-75 $m-1;
-        }
-
-        .winner-name {
-            font-size: clamp(1.1rem, 4vw, 1.3rem);
-        }
-
-        .winner-number,
-        .winner-trophy {
-            width: 28px;
-            height: 28px;
-            top: $m-0-5;
-        }
-
-        .winner-number {
-            left: $m-0-5;
-        }
-
-        .winner-trophy {
-            right: $m-0-5;
-        }
-
-        .winners-control {
-            top: auto;
-            bottom: 0;
-            width: 34px;
-            height: 34px;
-            margin: 0;
-        }
-
-        .carousel-control-prev {
-            left: 0;
-        }
-
-        .carousel-control-next {
-            right: 0;
-        }
-
-        .winners-control-icon {
-            width: 32px;
-            height: 32px;
-            font-size: 1rem;
-        }
-
-        .winners-indicators {
-            bottom: -$m-1;
-        }
     }
 }
 
-
-// =============================================================
-// MOBILE PEQUEÑO
-// =============================================================
-
 @media (max-width: 480px) {
     #pastWinnersCarousel {
-        padding: $m-2 0;
-
-        .winners-title {
-            font-size: clamp(2rem, 10vw, 2.5rem);
+        .winners-marquee-track {
+            gap: $m-0-75;
         }
 
-        .winners-carousel {
-            max-width: 280px;
+        .winners-marquee-item {
+            width: 220px;
         }
 
         .winner-card {
             min-height: 320px;
             max-height: 320px;
+            border-radius: 12px;
         }
 
         .winner-image-wrapper {
             height: 200px;
             min-height: 200px;
         }
-
-        .winner-info {
-            min-height: 80px;
-            padding: $m-0-5 $m-0-75;
-        }
-
-        .winner-label {
-            font-size: 0.5rem;
-        }
-
-        .winner-name {
-            font-size: 1.1rem;
-        }
-
-        .winner-number,
-        .winner-trophy {
-            width: 26px;
-            height: 26px;
-        }
     }
 }
-
-
-// =============================================================
-// REDUCIR ANIMACIONES
-// =============================================================
 
 @media (prefers-reduced-motion: reduce) {
     #pastWinnersCarousel {
 
+        .winners-marquee-track,
         .winner-card,
         .winner-image,
-        .winners-control-icon,
-        .winners-indicators [data-bs-target],
         .winner-trophy span,
         .winners-message-icon {
             animation: none;

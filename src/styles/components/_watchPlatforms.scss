@@ -1,0 +1,383 @@
+#howToWatchSection {
+    --how-to-watch-bg: #0d0a1a;
+    --how-to-watch-card: #1b1530;
+    --how-to-watch-text: #f5f5f5;
+    --how-to-watch-muted: #c4b8d9;
+    --how-to-watch-accent: #8b5cf6;
+    --how-to-watch-accent-light: #a78bfa;
+    --how-to-watch-border: rgba(139, 92, 246, 0.15);
+
+    position: relative;
+    overflow: hidden;
+
+    padding: $m-3 0;
+
+    background:
+        radial-gradient(circle at 50% 50%,
+            rgba(139, 92, 246, 0.08),
+            transparent 50%),
+        linear-gradient(135deg,
+            #0d0a1a 0%,
+            #150f2e 50%,
+            #0d0a1a 100%);
+
+
+    // =====================================================
+    // HEADER
+    // =====================================================
+
+    .how-to-watch-header {
+        max-width: 600px;
+        margin: 0 auto $m-2-5;
+        text-align: center;
+    }
+
+    .how-to-watch-eyebrow {
+        display: inline-block;
+        margin-bottom: $m-0-75;
+        color: var(--how-to-watch-accent-light);
+        font-family: $body-font;
+        font-size: 0.9rem;
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+    }
+
+    .how-to-watch-title {
+        margin: 0;
+        color: var(--how-to-watch-text);
+        font-family: $body-font;
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        line-height: 1;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+        text-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+    }
+
+    .how-to-watch-subtitle {
+        max-width: 500px;
+        margin: $m-1 auto 0;
+        color: var(--how-to-watch-muted);
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    .how-to-watch-divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: $m-0-75;
+        width: 180px;
+        margin: $m-1-5 auto 0;
+
+        span:not(.how-to-watch-divider-star) {
+            width: 65px;
+            height: 2px;
+            background: rgba(139, 92, 246, 0.3);
+        }
+    }
+
+    .how-to-watch-divider-star {
+        color: var(--how-to-watch-accent-light);
+        font-size: 1rem;
+        text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+    }
+
+
+    // =====================================================
+    // CARDS DE PLATAFORMAS
+    // =====================================================
+
+    .watch-card {
+        --platform-color: #8b5cf6;
+
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        height: 100%;
+        padding: $m-2 $m-1-5;
+        background: rgba(27, 21, 48, 0.8);
+        border: 1px solid var(--how-to-watch-border);
+        border-radius: 16px;
+        text-decoration: none;
+        backdrop-filter: blur(8px);
+        overflow: hidden;
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease,
+            border-color 0.3s ease;
+
+        &:hover {
+            transform: translateY(-5px);
+            border-color: var(--platform-color);
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.3),
+                0 0 25px color-mix(in srgb, var(--platform-color) 30%, transparent);
+        }
+    }
+
+    .watch-badge {
+        position: absolute;
+        top: $m-1;
+        right: $m-1;
+        padding: $m-0-25 $m-0-75;
+        background: color-mix(in srgb, var(--platform-color) 15%, transparent);
+        border: 1px solid color-mix(in srgb, var(--platform-color) 40%, transparent);
+        border-radius: 50px;
+        color: var(--platform-color);
+        font-family: $body-font;
+        font-size: 0.65rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+
+    .watch-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        margin: $m-1-5 0 $m-1;
+        font-size: 1.8rem;
+        color: var(--platform-color);
+        background: color-mix(in srgb, var(--platform-color) 15%, transparent);
+        border: 2px solid color-mix(in srgb, var(--platform-color) 40%, transparent);
+        border-radius: 50%;
+        transition: transform 0.3s ease, color 0.3s ease;
+
+        i {
+            transition: transform 0.3s ease;
+        }
+    }
+
+    .watch-card:hover {
+        .watch-icon {
+            transform: scale(1.1);
+
+            i {
+                transform: rotate(5deg);
+            }
+        }
+    }
+
+    .watch-title {
+        margin: 0 0 $m-0-75;
+        color: var(--how-to-watch-text);
+        font-family: $body-font;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .watch-description {
+        margin: 0 0 $m-1;
+        color: var(--how-to-watch-muted);
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    .watch-link {
+        margin-top: auto;
+        color: var(--platform-color);
+        font-family: $body-font;
+        font-size: 0.85rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        transition: letter-spacing 0.3s ease;
+
+        i {
+            font-size: 0.8rem;
+        }
+    }
+
+    .watch-card:hover {
+        .watch-link {
+            letter-spacing: 0.15em;
+        }
+    }
+
+
+    // =====================================================
+    // INFO BOX
+    // =====================================================
+
+    .how-to-watch-info {
+        margin-top: $m-2-5;
+    }
+
+    .watch-info-box {
+        display: inline-flex;
+        align-items: center;
+        gap: $m-1;
+        padding: $m-1 $m-2;
+        background: rgba(139, 92, 246, 0.1);
+        border: 1px solid rgba(139, 92, 246, 0.3);
+        border-radius: 50px;
+        backdrop-filter: blur(8px);
+    }
+
+    .watch-info-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 35px;
+        height: 35px;
+        flex-shrink: 0;
+        font-size: 1.2rem;
+        color: var(--how-to-watch-accent-light);
+        background: rgba(139, 92, 246, 0.15);
+        border: 1px solid rgba(139, 92, 246, 0.3);
+        border-radius: 50%;
+        animation: bellRing 2s ease-in-out infinite;
+    }
+
+    .watch-info-text {
+        margin: 0;
+        color: var(--how-to-watch-muted);
+        font-size: 0.9rem;
+        line-height: 1.5;
+
+        strong {
+            color: var(--how-to-watch-accent-light);
+            font-family: $body-font;
+            letter-spacing: 0.05em;
+        }
+    }
+}
+
+
+// =====================================================
+// ANIMACIONES
+// =====================================================
+
+@keyframes bellRing {
+
+    0%,
+    100% {
+        transform: rotate(0);
+    }
+
+    10% {
+        transform: rotate(15deg);
+    }
+
+    20% {
+        transform: rotate(-15deg);
+    }
+
+    30% {
+        transform: rotate(10deg);
+    }
+
+    40% {
+        transform: rotate(-10deg);
+    }
+
+    50% {
+        transform: rotate(0);
+    }
+}
+
+
+// =============================================================
+// TABLET
+// =============================================================
+
+@media (max-width: 992px) {
+    #howToWatchSection {
+        .watch-card {
+            padding: $m-1-5 $m-1;
+        }
+    }
+}
+
+
+// =============================================================
+// MOBILE
+// =============================================================
+
+@media (max-width: 768px) {
+    #howToWatchSection {
+        padding: $m-2-5 0;
+
+        .how-to-watch-title {
+            font-size: clamp(2.2rem, 8vw, 3rem);
+        }
+
+        .watch-card {
+            padding: $m-1;
+            border-radius: 12px;
+        }
+
+        .watch-badge {
+            font-size: 0.55rem;
+            padding: $m-0-25 $m-0-5;
+        }
+
+        .watch-icon {
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            margin: $m-1 0 $m-0-75;
+        }
+
+        .watch-title {
+            font-size: 1rem;
+        }
+
+        .watch-description {
+            font-size: 0.85rem;
+        }
+
+        .watch-info-box {
+            flex-direction: column;
+            text-align: center;
+            border-radius: 16px;
+            padding: $m-1 $m-1-5;
+        }
+    }
+}
+
+
+// =============================================================
+// MOBILE PEQUEÑO
+// =============================================================
+
+@media (max-width: 480px) {
+    #howToWatchSection {
+        padding: $m-2 0;
+
+        .how-to-watch-title {
+            font-size: clamp(2rem, 10vw, 2.5rem);
+        }
+
+        .watch-card {
+            padding: $m-0-75;
+        }
+
+        .watch-icon {
+            width: 45px;
+            height: 45px;
+            font-size: 1.2rem;
+        }
+    }
+}
+
+
+// =============================================================
+// REDUCIR ANIMACIONES
+// =============================================================
+
+@media (prefers-reduced-motion: reduce) {
+    #howToWatchSection {
+
+        .watch-card,
+        .watch-icon,
+        .watch-link,
+        .watch-info-icon {
+            animation: none;
+            transition: none;
+        }
+    }
+}

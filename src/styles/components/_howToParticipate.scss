@@ -1,0 +1,331 @@
+#howToSection {
+    --how-to-bg: #0d0a1a;
+    --how-to-card: #1b1530;
+    --how-to-text: #f5f5f5;
+    --how-to-muted: #c4b8d9;
+    --how-to-accent: #8b5cf6;
+    --how-to-accent-light: #a78bfa;
+    --how-to-border: rgba(139, 92, 246, 0.15);
+
+    position: relative;
+    overflow: hidden;
+
+    padding: $m-3 0;
+
+    background:
+        radial-gradient(circle at 50% 0%,
+            rgba(139, 92, 246, 0.08),
+            transparent 50%),
+        radial-gradient(circle at 50% 100%,
+            rgba(139, 92, 246, 0.05),
+            transparent 40%),
+        var(--how-to-bg);
+
+
+    // =====================================================
+    // HEADER
+    // =====================================================
+
+    .how-to-header {
+        max-width: 600px;
+        margin: 0 auto $m-2-5;
+        text-align: center;
+    }
+
+    .how-to-eyebrow {
+        display: inline-block;
+        margin-bottom: $m-0-75;
+        color: var(--how-to-accent-light);
+        font-family: $body-font;
+        font-size: 0.9rem;
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+    }
+
+    .how-to-title {
+        margin: 0;
+        color: var(--how-to-text);
+        font-family: $body-font;
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        line-height: 1;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+        text-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+    }
+
+    .how-to-subtitle {
+        max-width: 500px;
+        margin: $m-1 auto 0;
+        color: var(--how-to-muted);
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    .how-to-divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: $m-0-75;
+        width: 180px;
+        margin: $m-1-5 auto 0;
+
+        span:not(.how-to-divider-star) {
+            width: 65px;
+            height: 2px;
+            background: rgba(139, 92, 246, 0.3);
+        }
+    }
+
+    .how-to-divider-star {
+        color: var(--how-to-accent-light);
+        font-size: 1rem;
+        text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+    }
+
+
+    // =====================================================
+    // CARDS DE PASOS
+    // =====================================================
+
+    .step-card {
+        position: relative;
+        height: 100%;
+        text-align: center;
+        padding: $m-2 $m-1-5;
+        background: rgba(27, 21, 48, 0.8);
+        border: 1px solid var(--how-to-border);
+        border-radius: 16px;
+        backdrop-filter: blur(8px);
+        overflow: hidden;
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease,
+            border-color 0.3s ease;
+
+        &:hover {
+            transform: translateY(-5px);
+            border-color: rgba(139, 92, 246, 0.4);
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.3),
+                0 0 25px rgba(139, 92, 246, 0.15);
+        }
+    }
+
+    .step-number {
+        position: absolute;
+        top: $m-0-75;
+        right: $m-0-75;
+        color: rgba(255, 255, 255, 0.15);
+        font-family: $body-font;
+        font-size: 2.5rem;
+        line-height: 1;
+        letter-spacing: 0.05em;
+    }
+
+    .step-icon {
+        --step-color: #8b5cf6;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        margin: 0 auto $m-1-5;
+        font-size: 1.5rem;
+        color: var(--step-color);
+        background: color-mix(in srgb, var(--step-color) 10%, transparent);
+        border: 2px solid color-mix(in srgb, var(--step-color) 40%, transparent);
+        border-radius: 50%;
+        transition: transform 0.3s ease, color 0.3s ease, background 0.3s ease;
+
+        i {
+            transition: transform 0.3s ease;
+        }
+    }
+
+    .step-card:hover {
+        .step-icon {
+            transform: scale(1.1);
+            color: #fff;
+            background: color-mix(in srgb, var(--step-color) 20%, transparent);
+
+            i {
+                transform: rotate(5deg);
+            }
+        }
+    }
+
+    .step-title {
+        margin: 0 0 $m-0-75;
+        color: var(--how-to-text);
+        font-family: $body-font;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .step-description {
+        margin: 0;
+        color: var(--how-to-muted);
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    .step-accent {
+        width: 40px;
+        height: 3px;
+        margin: $m-1 auto 0;
+        border-radius: 10px;
+    }
+
+
+    // =====================================================
+    // CTA
+    // =====================================================
+
+    .how-to-cta {
+        margin-top: $m-2-5;
+    }
+
+    .how-to-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: $m-1 $m-2-5;
+        background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+        color: #fff;
+        font-family: $body-font;
+        font-size: 1.1rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        text-decoration: none;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow:
+            0 0 25px rgba(139, 92, 246, 0.5),
+            0 10px 30px rgba(0, 0, 0, 0.3);
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
+
+        &:hover {
+            transform: translateY(-3px);
+            box-shadow:
+                0 0 40px rgba(139, 92, 246, 0.7),
+                0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        &:active {
+            transform: translateY(-1px);
+        }
+    }
+}
+
+
+// =============================================================
+// TABLET
+// =============================================================
+
+@media (max-width: 992px) {
+    #howToSection {
+        .step-card {
+            padding: $m-1-5 $m-1;
+        }
+    }
+}
+
+
+// =============================================================
+// MOBILE
+// =============================================================
+
+@media (max-width: 768px) {
+    #howToSection {
+        padding: $m-2-5 0;
+
+        .how-to-title {
+            font-size: clamp(2.2rem, 8vw, 3rem);
+        }
+
+        .step-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: $m-1;
+            font-size: 1.2rem;
+        }
+
+        .step-title {
+            font-size: 1rem;
+        }
+
+        .step-description {
+            font-size: 0.85rem;
+        }
+
+        .how-to-btn {
+            width: 100%;
+            max-width: 350px;
+            padding: $m-0-75 $m-2;
+            font-size: 1rem;
+        }
+    }
+}
+
+
+// =============================================================
+// MOBILE PEQUEÑO
+// =============================================================
+
+@media (max-width: 480px) {
+    #howToSection {
+        padding: $m-2 0;
+
+        .how-to-title {
+            font-size: clamp(2rem, 10vw, 2.5rem);
+        }
+
+        .step-card {
+            padding: $m-1 $m-0-75;
+            border-radius: 12px;
+        }
+
+        .step-number {
+            font-size: 2rem;
+            top: $m-0-5;
+            right: $m-0-5;
+        }
+
+        .step-icon {
+            width: 45px;
+            height: 45px;
+            font-size: 1rem;
+        }
+
+        .step-title {
+            font-size: 0.9rem;
+        }
+
+        .step-description {
+            font-size: 0.8rem;
+        }
+    }
+}
+
+
+// =============================================================
+// REDUCIR ANIMACIONES
+// =============================================================
+
+@media (prefers-reduced-motion: reduce) {
+    #howToSection {
+
+        .step-card,
+        .step-icon,
+        .step-icon i,
+        .how-to-btn {
+            animation: none;
+            transition: none;
+        }
+    }
+}
